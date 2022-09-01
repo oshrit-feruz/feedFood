@@ -1,7 +1,7 @@
 {
   "name": "heroku-starter-project",
   "scripts": {
-    "start": "gulp",
+    "start": "cd ./src/client && npm start",
     "server": "nodemon --watch ./src/server ./src/server/server.ts",
     "deploy": "gulp deploy",
     "lint": "eslint ./src --ext .ts",

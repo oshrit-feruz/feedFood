@@ -27,13 +27,8 @@ gulp.task('organize', () => {
 
 // Transfers index
 gulp.task('client', () => {
-  return gulp.src(['./src/client/*'])
-    .pipe(gulp.dest('./dist/client'));
-});
-
-// Watch tsc files
-gulp.task('watch-tsc', () => {
-  return gulp.watch('./dist/client/**/*.jsx');
+  return gulp.src(['./src/client/build/**/**/*'])
+    .pipe(gulp.dest('./deploy/build'));
 });
 
 // Initial ts compile
@@ -119,7 +114,6 @@ gulp.task('deploy', gulp.series(
 gulp.task('dev', gulp.series(
   'build',
   gulp.parallel(
-    'watch-tsc',
     'tsc-w',
   ),
 ));
@@ -128,7 +122,6 @@ gulp.task('dev', gulp.series(
 gulp.task('default', gulp.series(
   'build',
   gulp.parallel(
-    'watch-tsc',
     'tsc-w',
     'express',
   ),
