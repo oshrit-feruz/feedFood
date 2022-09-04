@@ -21,7 +21,7 @@
 // // }
 
 // import { Cards } from 'react-responsive-cards'
- 
+
 // const ItemCard = () => {
 //   const details = [
 //     {
@@ -32,19 +32,18 @@
 //       handleOnClick: () => alert('Custom Event')
 //     }
 //   ]
- 
+
 //   return <Cards details={details} />
 // }
- 
+
 // export default ItemCard;
 
-import * as React from 'react';
-import AspectRatio from '@mui/joy/AspectRatio';
-import Box from '@mui/joy/Box';
-import Card from '@mui/joy/Card';
-import CardOverflow from '@mui/joy/CardOverflow';
-import Typography from '@mui/joy/Typography';
-
+import * as React from "react";
+import AspectRatio from "@mui/joy/AspectRatio";
+import Box from "@mui/joy/Box";
+import Card from "@mui/joy/Card";
+import CardOverflow from "@mui/joy/CardOverflow";
+import Typography from "@mui/joy/Typography";
 export default function ItemCard() {
   return (
     <Card variant="outlined" sx={{ maxWidth: 320 }}>
@@ -56,7 +55,7 @@ export default function ItemCard() {
           />
         </AspectRatio>
       </CardOverflow>
-      <Typography level="h2" sx={{ fontSize: 'md', mt: 2 }}>
+      <Typography level="h2" sx={{ fontSize: "md", mt: 2 }}>
         Yosemite National Park
       </Typography>
       <Typography level="body2" sx={{ mt: 0.5, mb: 2 }}>
@@ -65,20 +64,26 @@ export default function ItemCard() {
       <CardOverflow
         variant="soft"
         sx={{
-          display: 'flex',
+          display: "flex",
           gap: 1.5,
           py: 1.5,
-          px: 'var(--Card-padding)',
-          borderTop: '1px solid',
-          borderColor: 'neutral.outlinedBorder',
-          bgcolor: 'background.level1',
+          px: "var(--Card-padding)",
+          borderTop: "1px solid",
+          borderColor: "neutral.outlinedBorder",
+          bgcolor: "background.level1",
         }}
       >
-        <Typography level="body3" sx={{ fontWeight: 'md', color: 'text.secondary' }}>
+        <Typography
+          level="body3"
+          sx={{ fontWeight: "md", color: "text.secondary" }}
+        >
           6.3k views
         </Typography>
-        <Box sx={{ width: 2, bgcolor: 'divider' }} />
-        <Typography level="body3" sx={{ fontWeight: 'md', color: 'text.secondary' }}>
+        <Box sx={{ width: 2, bgcolor: "divider" }} />
+        <Typography
+          level="body3"
+          sx={{ fontWeight: "md", color: "text.secondary" }}
+        >
           1 hour ago
         </Typography>
       </CardOverflow>

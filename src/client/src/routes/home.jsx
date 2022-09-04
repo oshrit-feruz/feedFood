@@ -4,7 +4,7 @@ import { React, useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 // import Button from "@mui/joy/Button";
 
-import LargeCarousel from "./largeCarousel";
+import LargeCarousel from "../components/largeCarousel";
 export default function Home(props) {
   return (
     <div>

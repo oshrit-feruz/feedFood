@@ -11,6 +11,41 @@
   padding-inline-start: var(--side-padding);
   padding-inline-end: var(--side-padding);
 }
+body {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Arial";
+  letter-spacing: 1px;
+  margin: 45px 0px 15px 0px;
+}
+
+small {
+  width: 100%;
+  float: left;
+  text-align: center;
+  font-family: "Arial";
+  letter-spacing: 0.5px;
+  color: gray;
+}
+.form-control{
+  margin: 6px;
+}
+input {
+  width: 90%;
+  box-sizing: border-box;
+  margin: 25px auto;
+  padding: 8px 10px;
+  line-height: 40px;
+  box-shadow: 3px 0px 15px 1px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
 .btn-solid {
   margin-bottom: 8px;
 }
@@ -57,10 +92,8 @@ button {
   width: 1200px;
   height: 800px;
 }
-.card{
-
-    border-radius: 1rem;
-
+.card {
+  border-radius: 1rem;
 }
 .card-img-top {
   border-radius: 19px;

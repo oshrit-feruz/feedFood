@@ -26,21 +26,3 @@ export async function getUserOrder(user_id: number) {
 //   const socks20 = result.rows.map((sock: any) => Object.assign(sock));
 //   return socks20;
 // }
-
-// export async function insertToSocks(sock_id:any,model:any,quantity:any,size:any,manufacturing_year:any,location_id:any,officer_id:any) {
-//   const query = {
-//     text: 'INSERT INTO socks(sock_id,model,quantity,size,manufacturing_year,location_id,officer_id) VALUES($1, $2 ,$3 ,$4, $5, $6, $7)',
-//     values: [${sock_id},model,quantity,size,manufacturing_year,location_id,officer_id],
-//   }
-//   client.query(query, (err, res) => {
-//     if (err) {
-//       console.log(err.stack)
-//     } else {
-//       console.log(res.rows[0])
-//     }
-//   })
-//   client
-//     .query(query)
-//     .then(res => console.log(res.rows[0]))
-//     .catch(e => console.error(e.stack))
-// }
