@@ -77,4 +77,4 @@ client.connect();
 //     // let sql2 = insertOrdersTable + ordersValues
 //     // await client.query(sql2)
 // }
-initDb()
+// initDb()
