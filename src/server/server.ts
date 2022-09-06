@@ -2,6 +2,7 @@ import process from "process";
 import cors from 'cors'
 import bodyParser from 'body-parser';
 import { insertNewUser } from "./dbAdmin";
+import getRestaurants from "./getDb";
 // import { insertNewUser } from "./dbAdmin";
 const express = require('express');
 const path = require('path');
@@ -16,10 +17,18 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
   })
 }
-app.post('/insertUser', (request: any, response: any)=> {
+app.get('/getRestaurants', (_req: Request, res: any) => {
+  getRestaurants().then((restaurants) => res.json(restaurants))
+
+})
+// app.get('/getUser/:number', (req: any, response: any) => {
+//   const number = Number(req.params.number);
+//   getUserData(number).then((user) => response.json(user));
+// });
+app.post('/insertUser', (request: any, response: any) => {
   const userData = request.body;
   insertNewUser(userData)
-response.send(({ response: 'you succsess!' }))
+  response.send(({ response: 'you succsess!' }))
 })
 // // })
 // app.get('/getData', (_req: any, response: any) => {
@@ -41,10 +50,6 @@ response.send(({ response: 'you succsess!' }))
 //     // await browser.close()
 //   };
 //   data();
-// });
-// app.get('/getUser/:number', (req: any, response: any) => {
-//   const number = Number(req.params.number);
-//   // getUserData(number).then((user) => response.json(user));
 // });
 // app.get('/getOrders/:number', (req: any, response: any) => {
 //   const number = Number(req.params.number);

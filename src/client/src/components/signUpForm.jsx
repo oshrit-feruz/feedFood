@@ -1,4 +1,5 @@
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
+import Button from "@mui/material/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import React, { useState, useRef } from "react";
@@ -53,9 +54,8 @@ function SignUpFunc() {
                 console.log(newUser);
                 axios
                   .post("http://localhost:3002/insertUser", newUser)
-                  .then((res) => alert(res.data.response))
+                  .then((res) => alert(res.data.response), handleClose())
                   .catch((err) => alert("failed to sign up- please try again"));
-                console.log("sign up succsesfully");
               } else
                 alert(
                   "invalid phone number - please enter just number attached"
@@ -75,8 +75,11 @@ function SignUpFunc() {
   const handleShow = () => setShow(true);
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Sign Up
+      <Button id="btn" variant="contained" color="inherit" onClick={handleShow}>
+        Sign up{" "}
+      </Button>
+      <Button id="btn" variant="outlined" color="inherit">
+        Log in{" "}
       </Button>
 
       <Modal

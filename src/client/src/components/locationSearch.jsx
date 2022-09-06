@@ -1,69 +1,48 @@
 import React from "react";
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from "react-places-autocomplete";
+import { useFormik } from "formik";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Autocomplete, { usePlacesWidget } from "react-google-autocomplete";
 
-export default class LocationSearchInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { address: "" };
-  }
+export default function LocationSearch() {
+  const formik = useFormik({
+    initialValues: {
+      country: "",
+      countryAnother: "",
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
-  handleChange = (address) => {
-      console.log(address);
-      this.setState({ address });
-  };
+  const { ref } = usePlacesWidget({
+    apiKey: process.env.REACT_APP_GOOGLE,
+    onPlaceSelected: (place) => {
+      formik.setFieldValue("country", place.formatted_address);
+    },
+  });
 
-  handleSelect = (address) => {
-    geocodeByAddress(address)
-      .then((results) => getLatLng(results[0]))
-      .then((latLng) => console.log("Success", latLng))
-      .catch((error) => console.error("Error", error));
-  };
-
-  render() {
-    return (
-      <PlacesAutocomplete
-        value={this.state.address}
-        onChange={this.handleChange}
-        onSelect={this.handleSelect}
-
-  searchOptions={{ types: ['locality', 'country'] }}
+  return (
+    <div>
+      Formik state: {JSON.stringify(formik.values)}
+      <form
+        onSubmit={formik.handleSubmit}
+        style={{ display: "flex", flexDirection: "row" }}
       >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
-            <input
-              {...getInputProps({
-                placeholder: "Search Places ...",
-                className: "location-search-input",
-              })}
-            />
-            <div className="autocomplete-dropdown-container">
-              {loading && <div>Loading...</div>}
-              {suggestions.map((suggestion) => {
-                const className = suggestion.active
-                  ? "suggestion-item--active"
-                  : "suggestion-item";
-                // inline style for demonstration purpose
-                const style = suggestion.active
-                  ? { backgroundColor: "#fafafa", cursor: "pointer" }
-                  : { backgroundColor: "#ffffff", cursor: "pointer" };
-                return (
-                  <div
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                      style,
-                    })}
-                  >
-                    <span>{suggestion.description}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </PlacesAutocomplete>
-    );
-  }
+        <TextField
+          fullWidth
+          style={{ width: "250px", marginRight: "20px" }}
+          color="secondary"
+          variant="outlined"
+          label="בחירת כתובת למשלוח"
+          inputRef={ref}
+          id="country"
+          name="country"
+          onChange={formik.handleChange}
+          value={formik.values.country}
+        />
+        <Button id="btn" variant="contained" color="secondary" type="submit">Submit</Button>
+      </form>
+    </div>
+  );
 }

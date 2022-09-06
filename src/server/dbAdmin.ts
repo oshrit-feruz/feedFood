@@ -18,12 +18,12 @@ dotenv.config()
 // }
 interface user {
     name: string,
-    email:string,
+    email: string,
     password: string,
     city: string,
     street: string,
     phoneNumber: string,
-  }
+}
 
 
 const DATABASE_URL = process.env.DATABASE_URL
@@ -38,16 +38,16 @@ export const client = new Client({
 
 client.connect();
 
-    // const resi_values = Object.values(resi);
-    // const sql = 'INSERT INTO restaurants(restaurant_id,restaurant_name,city,type,iskosher,description,img,open,close,lat,long ) VALUES($1, $2, $3, $4, $5, $6, $7 ,$8,$9,$10,$11)';
-    // await client.query(sql, resi_values);
-  
+// const resi_values = Object.values(resi);
+// const sql = 'INSERT INTO restaurants(restaurant_id,restaurant_name,city,type,iskosher,description,img,open,close,lat,long ) VALUES($1, $2, $3, $4, $5, $6, $7 ,$8,$9,$10,$11)';
+// await client.query(sql, resi_values);
 
-export async function insertNewUser(userData:user){
+
+export async function insertNewUser(userData: user) {
     let insertUsersTable = `INSERT INTO users(user_name,password,phone_number,email,city,street) VALUES ($1, $2, $3, $4, $5, $6)`;
-      await client.query(insertUsersTable,[userData.name,userData.password,userData.phoneNumber,userData.email,userData.city,userData.street])
-    }
-  
+    await client.query(insertUsersTable, [userData.name, userData.password, userData.phoneNumber, userData.email, userData.city, userData.street])
+}
+
 // export async function deleteSock(number: Number) {
 //     const sql = `DELETE FROM locations_history WHERE sock_id = $1;`
 //     await client.query(sql, [number]);
