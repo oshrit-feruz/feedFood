@@ -25,7 +25,8 @@ export default function Home(props) {
   }, []);
   console.log(restaurants);
 
-  const restUi = restaurants.slice(0,4).map((restaurant) => {
+  const restUi = restaurants.slice(0, 1).map((restaurant) => {
+    console.log(restaurant);
     return (
       <RestaurantCard
         img={restaurant.img}
@@ -37,7 +38,7 @@ export default function Home(props) {
   return (
     <div>
       {/* {restUi} */}
-      <LargeCarousel/>
+      <LargeCarousel card={restUi} />
       {/* <LargeCarousel/> */}
     </div>
   );

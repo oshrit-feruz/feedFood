@@ -2,7 +2,7 @@ import process from "process";
 import cors from 'cors'
 import bodyParser from 'body-parser';
 import { insertNewUser } from "./dbAdmin";
-import getRestaurants, { getAsian, getDessert, getFish, getHamburger, getItalian, getMeat, getMediterranean, getMexican, getPizza, getSushi } from "./getDb";
+import getRestaurants, {  getByCategory} from "./getDb";
 // import { insertNewUser } from "./dbAdmin";
 const express = require('express');
 const path = require('path');
@@ -20,39 +20,43 @@ if (process.env.NODE_ENV === 'production') {
 app.get('/getRestaurants', (_req: Request, res: any) => {
   getRestaurants().then((restaurants) => res.json(restaurants))
 })
-app.get('/getAsian', (_req: Request, res: any) => {
-  getAsian().then((restaurants) => res.json(restaurants))
+app.get('/getByCategory:category', (req: any, res: any) => {
+  let category= req.params.category;
+  getByCategory(category).then((restaurants) => res.json(restaurants))
 })
-app.get('/getMeat', (_req: Request, res: any) => {
-  getMeat().then((meat) => res.json(meat))
-})
-app.get('/getMexican', (_req: Request, res: any) => {
-  getMexican().then((Mexican) => res.json(Mexican))
-})
-app.get('/getMediterranean', (_req: Request, res: any) => {
-  getMediterranean().then((Mediterranean) => res.json(Mediterranean))
-})
-app.get('/getPizza', (_req: Request, res: any) => {
-  getPizza().then((Pizza) => res.json(Pizza))
-})
-app.get('/getHamburger', (_req: Request, res: any) => {
-  getHamburger().then((Hamburger) => res.json(Hamburger))
-})
-app.get('/getSushi', (_req: Request, res: any) => {
-  getSushi().then((Sushi) => res.json(Sushi))
-})
-app.get('/getDessert', (_req: Request, res: any) => {
-  getDessert().then((Dessert) => res.json(Dessert))
-})
-app.get('/getFish', (_req: Request, res: any) => {
-  getFish().then((Fish) => res.json(Fish))
-})
-app.get('/getItalian', (_req: Request, res: any) => {
-  getItalian().then((Fish) => res.json(Fish))
-})
-app.get('/getRestaurants', (_req: Request, res: any) => {
-  getRestaurants().then((restaurants) => res.json(restaurants))
-})
+// app.get('/getAsian', (_req: Request, res: any) => {
+//   getAsian().then((restaurants) => res.json(restaurants))
+// })
+// app.get('/getMeat', (_req: Request, res: any) => {
+//   getMeat().then((meat) => res.json(meat))
+// })
+// app.get('/getMexican', (_req: Request, res: any) => {
+//   getMexican().then((Mexican) => res.json(Mexican))
+// })
+// app.get('/getMediterranean', (_req: Request, res: any) => {
+//   getMediterranean().then((Mediterranean) => res.json(Mediterranean))
+// })
+// app.get('/getPizza', (_req: Request, res: any) => {
+//   getPizza().then((Pizza) => res.json(Pizza))
+// })
+// app.get('/getHamburger', (_req: Request, res: any) => {
+//   getHamburger().then((Hamburger) => res.json(Hamburger))
+// })
+// app.get('/getSushi', (_req: Request, res: any) => {
+//   getSushi().then((Sushi) => res.json(Sushi))
+// })
+// app.get('/getDessert', (_req: Request, res: any) => {
+//   getDessert().then((Dessert) => res.json(Dessert))
+// })
+// app.get('/getFish', (_req: Request, res: any) => {
+//   getFish().then((Fish) => res.json(Fish))
+// })
+// app.get('/getItalian', (_req: Request, res: any) => {
+//   getItalian().then((Fish) => res.json(Fish))
+// })
+// app.get('/getRestaurants', (_req: Request, res: any) => {
+//   getRestaurants().then((restaurants) => res.json(restaurants))
+// })
 // app.get('/getUser/:number', (req: any, response: any) => {
 //   const number = Number(req.params.number);
 //   getUserData(number).then((user) => response.json(user));

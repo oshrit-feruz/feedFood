@@ -24,7 +24,6 @@ export default function LocationSearch() {
 
   return (
     <div>
-      Formik state: {JSON.stringify(formik.values)}
       <form
         onSubmit={formik.handleSubmit}
         style={{ display: "flex", flexDirection: "row" }}

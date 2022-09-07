@@ -11,7 +11,19 @@
   padding-inline-start: var(--side-padding);
   padding-inline-end: var(--side-padding);
 }
+.card {
+  border-radius: 1.3rem;
+}
+.card-body {
+  padding: 5px;
+}
+.modal-header .btn-close {
+  padding: 0.5rem 0.5rem;
+  margin-left: 0 px;
+  margin: -0.5rem -0.5rem -0.5rem;
+}
 body {
+  direction: rtl;
   text-align: center;
 }
 
@@ -59,13 +71,20 @@ button {
 #outlined-basic {
   border-radius: 108px;
 }
+.categoryIcon {
+  width: 40px;
+}
 .logo {
   padding: 7px;
   margin: 20px;
   height: 95px;
 }
-.RestaurantCarousel{
-  width:75%
+.RestaurantCarousel {
+  width: 75%;
+}
+.form-control {
+  direction: rtl;
+  margin: 2px;
 }
 .MultiCarousel {
   float: left;

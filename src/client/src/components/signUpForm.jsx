@@ -35,14 +35,27 @@ function SignUpFunc() {
     streetInput.current.focus();
     phoneNumberInput.current.focus();
 
-    if (textValidate(nameInput.current.value).status) {
-      console.log(textValidate(nameInput.current.value));
-
-      if (emailValidate(emailInput.current.value).status) {
-        if (textNumberValidate(passwordInput.current.value).status) {
-          if (textValidate(cityInput.current.value).status) {
-            if (textNumberValidate(streetInput.current.value).status) {
-              if (numValidate(phoneNumberInput.current.value).status) {
+    if (textValidate(nameInput.current.value).status & (newUser.name !== "")) {
+      if (
+        emailValidate(emailInput.current.value).status &
+        (newUser.email !== "")
+      ) {
+        if (
+          textNumberValidate(passwordInput.current.value).status &
+          (newUser.password !== "")
+        ) {
+          if (
+            textValidate(cityInput.current.value).status &
+            (newUser.city !== "")
+          ) {
+            if (
+              textNumberValidate(streetInput.current.value).status &
+              (newUser.street !== "")
+            ) {
+              if (
+                numValidate(phoneNumberInput.current.value).status &
+                (newUser.phoneNumber !== null)
+              ) {
                 setNewUser({
                   name: nameInput.current.value,
                   password: passwordInput.current.value,
@@ -55,20 +68,16 @@ function SignUpFunc() {
                 axios
                   .post("http://localhost:3002/insertUser", newUser)
                   .then((res) => alert(res.data.response), handleClose())
-                  .catch((err) => alert("failed to sign up- please try again"));
-              } else
-                alert(
-                  "invalid phone number - please enter just number attached"
-                );
-            } else
-              alert("invalid street - please enter the street name and number");
-          } else alert("invalid city - please check your input");
-        } else alert("invalid password - please enter letters and numbers");
+                  .catch((err) => alert("ההרשמה נכשלה- אנא נסה שוב"));
+              } else alert("מספר טלפון לא תקין- אנא הכנס רק מספרים");
+            } else alert("שם רחוב לא תקין- אנא הכנס את שם הרחוב והמספר");
+          } else alert("שם העיר אינו תקין- אנא הכנס עיר");
+        } else alert("סיסמא לא תקינה - אנא מלא את הסיסמא עם מספרים ואותיות");
       } else {
-        alert("invalid email - please check your input");
+        alert("אימייל לא תקין- אנא הכנס אימייל תקין");
       }
     } else {
-      alert("invalid name - please check your input");
+      alert("שם לא תקין- אנא תקן את שמך ללא מספרים");
     }
   };
   const handleClose = () => setShow(false);
@@ -76,10 +85,10 @@ function SignUpFunc() {
   return (
     <>
       <Button id="btn" variant="contained" color="inherit" onClick={handleShow}>
-        Sign up{" "}
+        להרשמה{" "}
       </Button>
       <Button id="btn" variant="outlined" color="inherit">
-        Log in{" "}
+        היכנס{" "}
       </Button>
 
       <Modal
@@ -89,62 +98,62 @@ function SignUpFunc() {
         keyboard={false}
       >
         <Form>
-          <Modal.Header closeButton>
-            <Modal.Title>Sign Up</Modal.Title>
+          <Modal.Header closeButton >
+            <Modal.Title> הרשמה ל FoodFeed</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
             <Form.Group className="mb-3" controlId="form">
-              <Form.Label>name</Form.Label>
+              <Form.Label>שם מלא</Form.Label>
               <Form.Control
                 type="name"
-                placeholder="Enter your name"
+                placeholder="הכנס שם פרטי ומשפחה"
                 ref={nameInput}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>כתובת מייל</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter email"
+                placeholder="הכנס מייל"
                 ref={emailInput}
               />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>סיסמא</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Enter Password"
+                placeholder="הכנס סיסמא- אותיות ומספרים"
                 ref={passwordInput}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="form">
-              <Form.Label>City </Form.Label>
+              <Form.Label>עיר </Form.Label>
               <Form.Control
                 type="City"
-                placeholder="Enter city"
+                // placeholder="Enter city"
                 ref={cityInput}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="form">
-              <Form.Label>Street</Form.Label>
+              <Form.Label>רחוב</Form.Label>
               <Form.Control
                 type="street"
-                placeholder="Enter street"
+                // placeholder="Enter street"
                 ref={streetInput}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="form">
-              <Form.Label>Phone Number</Form.Label>
+              <Form.Label>מספר טלפון</Form.Label>
               <Form.Control
                 type="phone"
-                placeholder="Enter phone number"
+                placeholder="מספר טלפון ללא מקף"
                 ref={phoneNumberInput}
               />
             </Form.Group>
             <Button variant="primary" type="button" onClick={signUp}>
-              Submit
+              הירשם
             </Button>
           </Modal.Body>
         </Form>

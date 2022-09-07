@@ -4,34 +4,34 @@ import RestaurantCard from "./restaurantCard";
 
 
 
-export default function LargeCarousel() {
+export default function LargeCarousel(props) {
   var settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll:2
   };
   return (
     <div className="RestaurantCarousel">
     <Slider {...settings}>
       <div>
-        <RestaurantCard/>
+        {props.card}
       </div>
       <div>
-        <RestaurantCard/>
+        {props.card}
       </div>
       <div>
-        <RestaurantCard/>
+        {props.card}
       </div>
       <div>
-        <RestaurantCard/>
+        {props.card}
       </div>
       <div>
-        <RestaurantCard/>
+        {props.card}
       </div>
       <div>
-        <RestaurantCard/>
+        {props.card}
       </div>
     </Slider>
     </div>
