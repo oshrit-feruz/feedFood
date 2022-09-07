@@ -18,7 +18,14 @@ function App() {
 
   const [asian, setAsian] = useState([]);
 
-  const [Mediterranean, setMediterranean] = useState([]);
+  const [mediterranean, setMediterranean] = useState([]);
+  const [hamburger, setHamburger] = useState([]);
+
+  const [sushi, setSushi] = useState([]);
+
+  const [dessert, setDessert] = useState([]);
+
+  const [fish, setFish] = useState([]);
 
   useEffect(() => {
     let mounted = true;
@@ -33,6 +40,7 @@ function App() {
     getData();
     return () => (mounted = false);
   }, []);
+
   console.log(restaurants);
 
   return (
