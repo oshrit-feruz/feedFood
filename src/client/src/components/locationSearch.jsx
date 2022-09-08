@@ -40,7 +40,7 @@ export default function LocationSearch() {
           onChange={formik.handleChange}
           value={formik.values.country}
         />
-        <Button id="btn" variant="contained" color="secondary" type="submit">Submit</Button>
+        <Button id="submitBtn" variant="contained"  type="submit">Submit</Button>
       </form>
     </div>
   );

@@ -1,5 +1,6 @@
 // import init from "./rff";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import asian from "../images/asian.png";
 import sushi from "../images/sushi.png";
@@ -27,102 +28,122 @@ function Filters() {
       <div className="categoryFilter">
         <h4 id="filtersTitle">בחר קטגוריה</h4>
         <div className="categoryDuo">
-          <img
+          <Link to="/category">
+            <img
             src={dessert}
             alt="קינוחים"
             className="categoryIcon"
             onClick={(e) => getRestaurants(e.currentTarget.alt)}
-          />
+            />
+            </Link>
           <h4>קינוחים</h4>
         </div>
 
         <div className="categoryDuo">
-          <img
+          <Link to="/category">
+            <img
             src={asian}
             alt="אסייתי"
             className="categoryIcon"
             onClick={(e) => getRestaurants(e.currentTarget.alt)}
-          />
+            />
+            </Link>
           <h4>אסייתי</h4>
         </div>
 
         <div className="categoryDuo">
-          <img
+          <Link to="/category">
+            <img
             src={sushi}
             alt="סושי"
             className="categoryIcon"
             onClick={(e) => getRestaurants(e.currentTarget.alt)}
-          />
+            />
+            </Link>
           <h4>סושי</h4>
         </div>
 
         <div className="categoryDuo">
-          <img
+          <Link to="/category">
+            <img
             src={burger}
             alt="המבורגר"
             className="categoryIcon"
             onClick={(e) => getRestaurants(e.currentTarget.alt)}
-          />
+            />
+            </Link>
           <h4>המבורגר</h4>
         </div>
 
         <div className="categoryDuo">
-          <img
+          <Link to="/category">
+            <img
             src={hummus}
             alt="ים תיכוני"
             className="categoryIcon"
             onClick={(e) => getRestaurants(e.currentTarget.alt)}
-          />
+            />
+            </Link>
           <h4>ים תיכוני</h4>
         </div>
 
         <div className="categoryDuo">
-          <img
+          <Link to="/category">
+            <img
             src={italian}
             alt="איטלקי"
             className="categoryIcon"
             onClick={(e) => getRestaurants(e.currentTarget.alt)}
-          />
+            />
+            </Link>
           <h4>איטלקי</h4>
         </div>
 
         <div className="categoryDuo">
-          <img
+          <Link to="/category">
+            <img
             src={tako}
             alt="מקסיקני"
             className="categoryIcon"
             onClick={(e) => getRestaurants(e.currentTarget.alt)}
-          />
+            />
+            </Link>
           <h4>מקסיקני</h4>
         </div>
 
         <div className="categoryDuo">
-          <img
+          <Link to="/category">
+            <img
             src={fish}
             alt="דגים"
             className="categoryIcon"
             onClick={(e) => getRestaurants(e.currentTarget.alt)}
-          />
+            />
+            </Link>
           <h4>דגים</h4>
         </div>
 
         <div className="categoryDuo">
-          <img
+          <Link to="/category">
+            <img
             src={meat}
             alt="בשר"
             className="categoryIcon"
             onClick={(e) => getRestaurants(e.currentTarget.alt)}
-          />
+            />
+            </Link>
           <h4>בשרים</h4>
         </div>
 
         <div className="categoryDuo">
-          <img
+          <Link to="/category">
+            <img
             src={pizza}
             alt="pizza"
             className="categoryIcon"
             onClick={(e) => getRestaurants(e.currentTarget.alt)}
-          />
+            />
+            </Link>
           <h4>פיצה</h4>
         </div>
       </div>

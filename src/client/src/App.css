@@ -53,10 +53,20 @@ input {
   padding: 8px 10px;
   line-height: 40px;
   box-shadow: 3px 0px 15px 1px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 13px solid #967E76;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.3px;
+}
+.categoryFilter {
+  background-color: white;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 310px;
+  height: 530px;
+  margin: 30px;
+  border: 1px solid rgb(189, 189, 189);
 }
 .btn-solid {
   margin-bottom: 8px;
@@ -110,10 +120,26 @@ button {
     transform: scale(1);
   }
 }
+h4 {
+  color: #967e76;
+}
+#submitBtn {
+  background-color: #7f95a3bd;
+  padding: 8px;
+  font-size: 17px;
+  border-radius: 9px;
+  font-weight: bold;
+  margin: 7px;
+}
 .logo {
   padding: 7px;
   margin: 20px;
   height: 95px;
+}
+.restaurantDisplay {
+  margin-top: 100px;
+  height: min-content;
+  width: 90%;
 }
 .RestaurantCarousel {
   width: 75%;
@@ -121,6 +147,11 @@ button {
 .form-control {
   direction: rtl;
   margin: 2px;
+}
+.mainPage {
+  background-color: #c6d1d861;
+  width: 100%;
+  display: flex;
 }
 .MultiCarousel {
   float: left;
@@ -198,9 +229,9 @@ button {
   border-radius: 1rem;
 }
 .card-img-top {
-    width: 100%;
-    border-radius: 19px;
-    height: 160px;
+  width: 100%;
+  border-radius: 19px;
+  height: 160px;
 }
 .cardFooter {
   border-top: 0.0925rem dashed rgba(32, 33, 37, 0.282);

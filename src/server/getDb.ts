@@ -33,7 +33,7 @@ export async function getFavorites() {
   return restaurants
 }
 export async function getDesserts() {
-  const sql = `select * from restaurants order by type='קינוחים' limit 15;`;
+  const sql = `select * from restaurants where type='קינוחים' limit 15;`;
   const result = await client.query(sql);
   const restaurants = result.rows.map((order: any) => Object.assign(order));
   return restaurants
