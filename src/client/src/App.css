@@ -72,7 +72,43 @@ button {
   border-radius: 108px;
 }
 .categoryIcon {
-  width: 40px;
+  background-color: transparent;
+  transition: 0.3s;
+  width: 45px;
+  padding: 8px;
+  margin: 9px;
+}
+#filtersTitle {
+  height: 7px;
+  margin-top: 25px;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.categoryFilter {
+  border-radius: 9px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 310px;
+  height: 530px;
+  border: 3px solid rgb(189, 189, 189);
+  margin: 30px;
+}
+.categoryIcon:hover {
+  background-color: #666;
+  border-radius: 70%;
+  animation: pulse 1s infinite;
+  transition: 0.3s;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 .logo {
   padding: 7px;
@@ -152,6 +188,10 @@ button {
 #largecarsoule {
   width: 1200px;
   height: 800px;
+}
+.categoryDuo {
+  width: 90px;
+  height: 70px;
 }
 .card {
   border-radius: 1rem;
