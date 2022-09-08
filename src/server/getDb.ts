@@ -20,12 +20,26 @@ export async function getUserOrder(user_id: number) {
   return thisOrder
 }
 
-export async function getByCategory(category:string) {
+export async function getByCategory(category: string) {
   const sql = `SELECT * FROM restaurants WHERE type=$1;`;
-  const result = await client.query(sql,[category]);
+  const result = await client.query(sql, [category]);
   const restaurants = result.rows.map((order: any) => Object.assign(order));
   return restaurants
 }
+export async function getFavorites() {
+  const sql = `select * from restaurants order by RANDOM() limit 30;`;
+  const result = await client.query(sql);
+  const restaurants = result.rows.map((order: any) => Object.assign(order));
+  return restaurants
+}
+export async function getDesserts() {
+  const sql = `select * from restaurants order by type='קינוחים' limit 15;`;
+  const result = await client.query(sql);
+  const restaurants = result.rows.map((order: any) => Object.assign(order));
+  return restaurants
+}
+
+
 // export async function getMexican() {
 //   const sql = `SELECT * FROM restaurants WHERE type='מקסיקני';`;
 //   const result = await client.query(sql);

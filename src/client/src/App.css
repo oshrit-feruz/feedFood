@@ -177,6 +177,7 @@ button {
   height: 800px;
 }
 .tags {
+  height: 30px;
   color: rgb(116, 116, 116);
 }
 .mainInput {
@@ -197,7 +198,9 @@ button {
   border-radius: 1rem;
 }
 .card-img-top {
-  border-radius: 19px;
+    width: 100%;
+    border-radius: 19px;
+    height: 160px;
 }
 .cardFooter {
   border-top: 0.0925rem dashed rgba(32, 33, 37, 0.282);

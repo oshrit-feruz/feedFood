@@ -2,7 +2,7 @@ import process from "process";
 import cors from 'cors'
 import bodyParser from 'body-parser';
 import { insertNewUser } from "./dbAdmin";
-import getRestaurants, {  getByCategory} from "./getDb";
+import getRestaurants, {  getByCategory, getDesserts, getFavorites} from "./getDb";
 // import { insertNewUser } from "./dbAdmin";
 const express = require('express');
 const path = require('path');
@@ -19,6 +19,12 @@ if (process.env.NODE_ENV === 'production') {
 }
 app.get('/getRestaurants', (_req: Request, res: any) => {
   getRestaurants().then((restaurants) => res.json(restaurants))
+})
+app.get('/getFavorites', (_req: Request, res: any) => {
+  getFavorites().then((restaurants) => res.json(restaurants))
+})
+app.get('/getDesserts', (_req: Request, res: any) => {
+  getDesserts().then((restaurants) => res.json(restaurants))
 })
 app.get('/getByCategory:category', (req: any, res: any) => {
   let category= req.params.category;

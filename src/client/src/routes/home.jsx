@@ -8,25 +8,32 @@ import LargeCarousel from "../components/largeCarousel";
 import RestaurantCard from "../components/restaurantCard";
 import axios from "axios";
 export default function Home(props) {
-  const [restaurants, setRestaurants] = useState([]);
+  const [favoritesRestaurants, setFavoritesRestaurants] = useState([]);
+  const [desserts, setDesserts] = useState([]);
 
   useEffect(() => {
     let mounted = true;
     function getData() {
       axios
-        .get("http://localhost:3002/getRestaurants")
+        .get("http://localhost:3002/getFavorites")
         .then((res) => {
-          setRestaurants(res.data);
+          setFavoritesRestaurants(res.data);
         })
         .catch((err) => alert("failed to sign up- please try again"));
+        
+      axios
+      .get("http://localhost:3002/getDesserts")
+      .then((res) => {
+        setDesserts(res.data);
+      })
+      .catch((err) => alert("failed to sign up- please try again"));
+      
     }
     getData();
     return () => (mounted = false);
   }, []);
-  console.log(restaurants);
 
-  const restUi = restaurants.slice(0, 1).map((restaurant) => {
-    console.log(restaurant);
+  const favoriteUi = favoritesRestaurants.slice(0,10).map((restaurant) => {
     return (
       <RestaurantCard
         img={restaurant.img}
@@ -37,8 +44,8 @@ export default function Home(props) {
   });
   return (
     <div>
-      {/* {restUi} */}
-      <LargeCarousel card={restUi} />
+      {/* {favoriteUi} */}
+      <LargeCarousel card={favoriteUi} />
       {/* <LargeCarousel/> */}
     </div>
   );
