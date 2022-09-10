@@ -26,7 +26,7 @@ app.get('/getFavorites', (_req: Request, res: any) => {
 app.get('/getDesserts', (_req: Request, res: any) => {
   getDesserts().then((restaurants) => res.json(restaurants))
 })
-app.get('/getByCategory:category', (req: any, res: any) => {
+app.get('/getByCategory/:category', (req: any, res: any) => {
   let category= req.params.category;
   getByCategory(category).then((restaurants) => res.json(restaurants))
 })

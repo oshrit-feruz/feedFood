@@ -1,4 +1,4 @@
-.bg-white {
+.bg-light {
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -53,7 +53,7 @@ input {
   padding: 8px 10px;
   line-height: 40px;
   box-shadow: 3px 0px 15px 1px rgba(0, 0, 0, 0.1);
-  border: 13px solid #967E76;
+  border: 13px solid #967e76;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.3px;
@@ -123,6 +123,11 @@ button {
 h4 {
   color: #967e76;
 }
+.carouselDuo {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
 #submitBtn {
   background-color: #7f95a3bd;
   padding: 8px;
@@ -133,7 +138,7 @@ h4 {
 }
 .logo {
   padding: 7px;
-  margin: 20px;
+  /* margin: 20px; */
   height: 95px;
 }
 .restaurantDisplay {
@@ -152,6 +157,8 @@ h4 {
   background-color: #c6d1d861;
   width: 100%;
   display: flex;
+
+  align-items: baseline;
 }
 .MultiCarousel {
   float: left;

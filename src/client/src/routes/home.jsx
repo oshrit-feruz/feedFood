@@ -19,21 +19,20 @@ export default function Home(props) {
         .then((res) => {
           setFavoritesRestaurants(res.data);
         })
-        .catch((err) => alert("failed to sign up- please try again"));
-        
+        .catch((err) => alert("failed to get data- please try again"));
+
       axios
-      .get("http://localhost:3002/getDesserts")
-      .then((res) => {
-        setDesserts(res.data);
-      })
-      .catch((err) => alert("failed to sign up- please try again"));
-      
+        .get("http://localhost:3002/getDesserts")
+        .then((res) => {
+          setDesserts(res.data);
+        })
+        .catch((err) => alert("failed to get data- please try again"));
     }
     getData();
     return () => (mounted = false);
   }, []);
 
-  const favoriteUi = favoritesRestaurants.slice(0,10).map((restaurant) => {
+  const favoriteUi = favoritesRestaurants.slice(0, 10).map((restaurant) => {
     return (
       <RestaurantCard
         img={restaurant.img}
@@ -42,7 +41,7 @@ export default function Home(props) {
       />
     );
   });
-  const dessertsUi = dessertsRestaurants.slice(0,10).map((restaurant) => {
+  const dessertsUi = dessertsRestaurants.slice(0, 10).map((restaurant) => {
     return (
       <RestaurantCard
         img={restaurant.img}
@@ -52,11 +51,12 @@ export default function Home(props) {
     );
   });
   return (
-    
     <div className="restaurantDisplay">
       {/* {favoriteUi} */}
-      <h4>המסעדות המומלצות</h4>
-      <LargeCarousel card={favoriteUi} />
+      <div className="carouselDuo">
+        <h4>המסעדות המומלצות</h4>
+        <LargeCarousel card={favoriteUi} />
+      </div>
       <LargeCarousel card={dessertsUi} />
       {/* <LargeCarousel card={favoriteUi} />
       <LargeCarousel card={favoriteUi} /> */}

@@ -23,7 +23,7 @@ export default function LocationSearch() {
   });
 
   return (
-    <div>
+    <div className="searchForm">
       <form
         onSubmit={formik.handleSubmit}
         style={{ display: "flex", flexDirection: "row" }}

@@ -3,6 +3,7 @@ import { Outlet, Link, Routes, Route } from "react-router-dom";
 import Filters from "./components/Filters";
 import Home from "./routes/home";
 import NavBar from "./components/navBar";
+import Category from "./routes/Category";
 function App() {
   return (
     <>
@@ -11,8 +12,7 @@ function App() {
         <Filters />
         <Routes>
           <Route path="/home" element={<Home />}></Route>
-
-          {/* <Route path="/locations" element={<Locations admin={false} />}></Route> */}
+          <Route path="/category" element={<Category />}></Route>
         </Routes>
       </div>
       {/* {restUi} */}
