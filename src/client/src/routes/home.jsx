@@ -15,16 +15,16 @@ export default function Home(props) {
     let mounted = true;
     function getData() {
       axios
-        .get("http://localhost:3002/getFavorites")
+        .get("/getFavorites")
         .then((res) => {
           setFavoritesRestaurants(res.data);
         })
         .catch((err) => alert("failed to get data- please try again"));
 
       axios
-        .get("http://localhost:3002/getDesserts")
+        .get("/getDesserts")
         .then((res) => {
-          setDesserts(res.data);
+          console.log(res.data);
         })
         .catch((err) => alert("failed to get data- please try again"));
     }

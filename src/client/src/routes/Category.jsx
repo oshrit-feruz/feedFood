@@ -21,12 +21,17 @@ export default function Category(props) {
     let mounted = true;
     function getData() {
       axios
-        .get(`http://localhost:3002/getByCategory/${chossenCategory}`)
+        .get(` /getByCategory/${chossenCategory}`)
         .then((res) => {
           setRestaurants(res.data);
         })
         .catch((err) => alert(`failed to get data please try again`));
-
+        axios
+        .get(`/getData`)
+        .then((res) => {
+          console.log(res.data)
+        })
+        .catch((err) => alert(`failed to get data please try again`));
     }
     getData();
     return () => (mounted = false);

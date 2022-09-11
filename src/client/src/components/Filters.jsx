@@ -17,14 +17,6 @@ import pizza from "../images/pizza.png";
 function Filters() {
   const [restaurant, setRestaurant] = useState([]);
   console.log(restaurant);
-  //todo: on click event - category event
-  // const getRestaurants = (category) => {
-  //   console.log(category);
-  //   axios
-  //     .get(`http://localhost:3002/getByCategory${category}`)
-  //     .then((res) => setRestaurant(res.data));
-  //   console.log(restaurant);
-  // };
   return (
     <>
       <div className="categoryFilter">

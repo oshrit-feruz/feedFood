@@ -38,14 +38,14 @@ export const client = new Client({
 
 client.connect();
 
-// const resi_values = Object.values(resi);
-// const sql = 'INSERT INTO restaurants(restaurant_id,restaurant_name,city,type,iskosher,description,img,open,close,lat,long ) VALUES($1, $2, $3, $4, $5, $6, $7 ,$8,$9,$10,$11)';
-// await client.query(sql, resi_values);
-
-
 export async function insertNewUser(userData: user) {
     let insertUsersTable = `INSERT INTO users(user_name,password,phone_number,email,city,street) VALUES ($1, $2, $3, $4, $5, $6)`;
     await client.query(insertUsersTable, [userData.name, userData.password, userData.phoneNumber, userData.email, userData.city, userData.street])
+}
+
+export async function checkUser(userData: user) {
+    let checkUsersTable = `select user_id from users where email=$1 and password=$2;`;
+    await client.query(checkUsersTable, [userData.email, userData.password])
 }
 
 // export async function deleteSock(number: Number) {
