@@ -26,12 +26,12 @@ export default function Category(props) {
           setRestaurants(res.data);
         })
         .catch((err) => alert(`failed to get data please try again`));
-        axios
-        .get(`/getData`)
-        .then((res) => {
-          console.log(res.data)
-        })
-        .catch((err) => alert(`failed to get data please try again`));
+        // axios
+        // .get(`/getData`)
+        // .then((res) => {
+        //   console.log(res.data)
+        // })
+        // .catch((err) => alert(`failed to get data please try again`));
     }
     getData();
     return () => (mounted = false);

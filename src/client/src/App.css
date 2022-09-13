@@ -14,6 +14,10 @@
 .card {
   border-radius: 1.3rem;
 }
+.card-title {
+  height: 40px;
+  margin-bottom: 0.5rem;
+}
 .card-body {
   padding: 5px;
 }
@@ -63,7 +67,7 @@ input {
   border-radius: 8px;
   display: grid;
   grid-template-columns: auto auto auto;
-  width: 310px;
+  width: 16vw;
   height: 530px;
   margin: 30px;
   border: 1px solid rgb(189, 189, 189);
@@ -144,10 +148,10 @@ h4 {
 .restaurantDisplay {
   margin-top: 100px;
   height: min-content;
-  width: 90%;
+  width: 70%;
 }
 .RestaurantCarousel {
-  width: 75%;
+  width: 100%;
 }
 .form-control {
   direction: rtl;

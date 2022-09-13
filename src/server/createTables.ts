@@ -32,12 +32,13 @@ client.connect();
     // )
 
 // await client.query(
-    `CREATE TABLE IF NOT EXISTS dishes(
+    `CREATE TABLE IF NOT EXISTS dishes1(
       dish_id SERIAL PRIMARY KEY,
-      dish TEXT NOT NULL,
-      dish_desc TEXT,
-      dish_img TEXT NOT NULL,
-      restaurant_name TEXT NOT NULL
+      dish_name VARCHAR(100) NOT NULL,
+      dish_desc VARCHAR(100),
+      dish_img VARCHAR(100) NOT NULL,
+      dish_price VARCHAR(100) NOT NULL,
+      restaurant_name VARCHAR(100) NOT NULL
   );`
 // )}
 //     await client.query(
