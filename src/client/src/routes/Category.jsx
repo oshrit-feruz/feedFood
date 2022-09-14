@@ -26,18 +26,12 @@ export default function Category(props) {
           setRestaurants(res.data);
         })
         .catch((err) => alert(`failed to get data please try again`));
-        // axios
-        // .get(`/getData`)
-        // .then((res) => {
-        //   console.log(res.data)
-        // })
-        // .catch((err) => alert(`failed to get data please try again`));
     }
     getData();
     return () => (mounted = false);
   }, [chossenCategory]);
   console.log(restaurants);
-  const restauratUi = restaurants.slice(0, 10).map((restaurant) => {
+  const restauratUi = restaurants.map((restaurant) => {
     return (
       <RestaurantCard
         img={restaurant.img}
@@ -48,8 +42,10 @@ export default function Category(props) {
   });
   return (
     <div className="restaurantDisplay">
-      <h4>המסעדות המומלצות</h4>
-      <LargeCarousel card={restauratUi} />
+      <div className="resaturantsCategory">
+
+      {restauratUi}
+      </div>
     </div>
   );
 }

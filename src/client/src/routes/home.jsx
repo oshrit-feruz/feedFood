@@ -25,7 +25,7 @@ export default function Home(props) {
       axios
         .get("/getDesserts")
         .then((res) => {
-          console.log(res.data);
+          setDesserts(res.data);
         })
         .catch((err) => alert("failed to get data- please try again"));
     }
@@ -79,6 +79,10 @@ export default function Home(props) {
       <div className="carouselDuo">
         <h4>החדשות ביותר</h4>
         <LargeCarousel card={newestUi} />
+      </div>
+      <div className="carouselDuo">
+        <h4>משהו מתוק</h4>
+        <LargeCarousel card={dessertsUi} />
       </div>
       <div className="carouselDuo">
         <h4>הפופולאריות ביותר</h4>

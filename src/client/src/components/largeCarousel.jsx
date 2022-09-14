@@ -11,7 +11,7 @@ export default function LargeCarousel(props) {
     slidesToScroll: 2,
     responsive: [
       {
-        breakpoint: 1224,
+        breakpoint: 1600,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -20,7 +20,7 @@ export default function LargeCarousel(props) {
         },
       },
       {
-        breakpoint: 1024,
+        breakpoint: 1224,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -28,7 +28,7 @@ export default function LargeCarousel(props) {
         },
       },
       {
-        breakpoint: 680,
+        breakpoint: 880,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

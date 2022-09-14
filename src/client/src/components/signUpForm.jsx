@@ -142,7 +142,7 @@ function SignUpFunc() {
       >
         <Form>
           <Modal.Header closeButton>
-            <Modal.Title> הרשמה ל FoodFeed</Modal.Title>
+            <Modal.Title> הרשמה ל FeedFood</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
@@ -201,7 +201,7 @@ function SignUpFunc() {
       >
         <Form>
           <Modal.Header closeButton>
-            <Modal.Title> כניסה ל FoodFeed</Modal.Title>
+            <Modal.Title> כניסה ל FeedFood</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
