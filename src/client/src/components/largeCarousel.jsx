@@ -20,7 +20,7 @@ export default function LargeCarousel(props) {
         },
       },
       {
-        breakpoint: 1224,
+        breakpoint: 1380,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -28,7 +28,7 @@ export default function LargeCarousel(props) {
         },
       },
       {
-        breakpoint: 880,
+        breakpoint: 1090,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

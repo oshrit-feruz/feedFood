@@ -26,6 +26,13 @@ export async function getByCategory(category: string) {
   const restaurants = result.rows.map((order: any) => Object.assign(order));
   return restaurants
 }
+export async function dishesByRestaurant(restaurantName: string) {
+  const sql = `SELECT * FROM dishes WHERE restaurant_name=$1 ;`;
+  console.log(restaurantName);
+  const result = await client.query(sql, [restaurantName]);
+  const dishes = result.rows.map((dish: any) => Object.assign(dish));
+  return dishes
+}
 export async function getFavorites() {
   const sql = `select * from restaurants order by RANDOM() limit 30;`;
   const result = await client.query(sql);

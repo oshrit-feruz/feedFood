@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import LargeCarousel from "../components/largeCarousel";
 import RestaurantCard from "../components/restaurantCard";
 import axios from "axios";
+import Facebook from "../components/dishCard";
 export default function Home(props) {
   const [favoritesRestaurants, setFavoritesRestaurants] = useState([]);
   const [dessertsRestaurants, setDesserts] = useState([]);
@@ -39,6 +40,7 @@ export default function Home(props) {
         img={restaurant.img}
         capt={restaurant.description}
         title={restaurant.restaurant_name}
+        
       />
     );
   });
@@ -63,6 +65,7 @@ export default function Home(props) {
   const dessertsUi = dessertsRestaurants.map((restaurant) => {
     return (
       <RestaurantCard
+      
         img={restaurant.img}
         capt={restaurant.description}
         title={restaurant.restaurant_name}
@@ -70,7 +73,9 @@ export default function Home(props) {
     );
   });
   return (
+
     <div className="restaurantDisplay">
+      {/* <Facebook/> */}
       {/* {favoriteUi} */}
       <div className="carouselDuo">
         <h4>המסעדות המומלצות</h4>

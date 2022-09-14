@@ -1,3 +1,95 @@
+body {
+  background: hsla(210, 20%, 90%, 1);
+  // line-height: 1.6;
+  // display: flex;
+  // justify-content: center;
+  // min-height: 100vh;
+  // align-items: center;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h5 {
+  margin: 0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.header h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 3em;
+  margin-bottom: 0.2em;
+  line-height: 1.2;
+  color: #222;
+}
+
+.header h3 {
+  font-weight: 400;
+  color: #555;
+  width: 30em;
+}
+
+.cards {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.card {
+  background: #fff;
+  width: 24em;
+  border-radius: 0.6em;
+  margin: 1em;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3),
+    0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
+  transition: all ease 200ms;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14),
+    0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
+}
+
+.card img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card h2 {
+  color: #222;
+  margin-top: -0.2em;
+  line-height: 1.4;
+  font-size: 1.3em;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  transition: all ease-in 100ms;
+}
+
+.card p {
+  color: #777;
+}
+
+.card h5 {
+  color: #bbb;
+  font-weight: 700;
+  font-size: 0.7em;
+  letter-spacing: 0.04em;
+  margin: 1.4em 0 0 0;
+  text-transform: uppercase;
+}
+
+.card-body {
+  padding: 1.2em;
+}
+
 .bg-light {
   display: flex;
   justify-content: space-between;
@@ -62,16 +154,6 @@ input {
   font-weight: 700;
   letter-spacing: 0.3px;
 }
-.categoryFilter {
-  background-color: white;
-  border-radius: 8px;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  width: 16vw;
-  height: 530px;
-  margin: 30px;
-  border: 1px solid rgb(189, 189, 189);
-}
 .btn-solid {
   margin-bottom: 8px;
 }
@@ -99,13 +181,15 @@ button {
   grid-column-end: 4;
 }
 .categoryFilter {
+  background-color: white;
   border-radius: 9px;
   display: grid;
   grid-template-columns: auto auto auto;
   width: 310px;
+  // width: 20%;
   height: 530px;
-  border: 3px solid rgb(189, 189, 189);
   margin: 30px;
+  border: 1px solid rgb(189, 189, 189);
 }
 .categoryIcon:hover {
   background-color: #666;
@@ -128,6 +212,7 @@ h4 {
   color: #967e76;
 }
 .carouselDuo {
+  margin-bottom: 56px;
   display: flex;
   flex-direction: column;
   align-items: baseline;
@@ -140,6 +225,14 @@ h4 {
   font-weight: bold;
   margin: 7px;
 }
+.btn:disabled,
+fieldset:disabled .btn {
+  pointer-events: none;
+  background-color: rgb(55 97 115 / 17%);
+  color: rgb(34 55 64);
+  opacity: 0.65;
+}
+
 .logo {
   padding: 7px;
   /* margin: 20px; */
@@ -148,10 +241,17 @@ h4 {
 .restaurantDisplay {
   margin-top: 100px;
   height: min-content;
-  width: 70%;
+  width: calc(100vw - 520px);
 }
 .RestaurantCarousel {
   width: 100%;
+}
+.resaturantsCategory {
+  row-gap: 2vh;
+  display: grid;
+  gap: 2vh;
+  grid-row-gap: 5vh;
+  grid-template-columns: auto auto auto auto;
 }
 .form-control {
   direction: rtl;
@@ -162,7 +262,7 @@ h4 {
   width: 100%;
   display: flex;
 
-  align-items: baseline;
+  gap: 54px;
 }
 .MultiCarousel {
   float: left;
@@ -236,17 +336,14 @@ h4 {
   width: 90px;
   height: 70px;
 }
-.card {
-  border-radius: 1rem;
-}
 .card-img-top {
   width: 100%;
-  border-radius: 19px;
   height: 160px;
 }
 .cardFooter {
   border-top: 0.0925rem dashed rgba(32, 33, 37, 0.282);
 }
+
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap');
 
 
