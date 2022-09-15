@@ -21,7 +21,7 @@ export default function Category(props) {
     let mounted = true;
     function getData() {
       axios
-        .get(` /getByCategory/${chossenCategory}`)
+        .get(`/getByCategory/${chossenCategory}`)
         .then((res) => {
           setRestaurants(res.data);
         })
@@ -33,6 +33,7 @@ export default function Category(props) {
   console.log(restaurants);
   const restauratUi = restaurants.map((restaurant) => {
     return (
+      
       <RestaurantCard
         img={restaurant.img}
         capt={restaurant.description}

@@ -1,16 +1,17 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 export default function RestaurantCard(props) {
   return (
-    <Link
-      to="/restaurant"
-      state={{
-        restaurantName: props.title,
-      }}
-    >
-      <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem" }}>
+      {/* <Link
+        to="/restaurant"
+        state={{
+          restaurantName: props.title,
+        }}
+      > */}
         <Card.Img variant="top" src={props.img} />
         <Card.Body>
           <Card.Title>{props.title}</Card.Title>
@@ -22,7 +23,7 @@ export default function RestaurantCard(props) {
             {Math.floor(Math.random() * 30 + 20)}{" "}
           </div>
         </Card.Body>
-      </Card>
-    </Link>
+      {/* </Link> */}
+    </Card>
   );
 }

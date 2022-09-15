@@ -35,9 +35,11 @@ app.get('/getByCategory/:category', (req: any, res: any) => {
   let category= req.params.category;
   getByCategory(category).then((restaurants) => res.json(restaurants))
 })
-app.get('/restaurnt/:restaurantName', (req: any, res: any) => {
+app.get('/restaurant/:restaurantName', (req: any, res: any) => {
   let restaurantName= req.params.restaurantName;
-  console.log(restaurantName);
+  console.log(req);
+  console.log("insert");
+  
   dishesByRestaurant(restaurantName).then((dishes) => res.json(dishes))
 })
 // app.get('/getUser/:number', (req: any, response: any) => {
