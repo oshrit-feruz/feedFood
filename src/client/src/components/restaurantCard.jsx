@@ -6,12 +6,12 @@ import "react-loading-skeleton/dist/skeleton.css";
 export default function RestaurantCard(props) {
   return (
     <Card style={{ width: "18rem" }}>
-      {/* <Link
+      <Link
         to="/restaurant"
         state={{
           restaurantName: props.title,
         }}
-      > */}
+      >
         <Card.Img variant="top" src={props.img} />
         <Card.Body>
           <Card.Title>{props.title}</Card.Title>
@@ -23,7 +23,7 @@ export default function RestaurantCard(props) {
             {Math.floor(Math.random() * 30 + 20)}{" "}
           </div>
         </Card.Body>
-      {/* </Link> */}
+      </Link>
     </Card>
   );
 }

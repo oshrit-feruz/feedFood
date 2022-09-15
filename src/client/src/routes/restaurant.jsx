@@ -28,21 +28,23 @@ export default function Dishes(props) {
     getData();
     return () => (mounted = false);
   }, [restaurantName]);
-//   const dishesUi = dishes.map((dish) => {
-//     return (
-//       <DishCard
-//         img={restaurant.img}
-//         capt={restaurant.description}
-//         title={restaurant.restaurant_name}
-//       />
-//     );
-//   });
+  const dishesUi = dishes.map((dish) => {
+    if (dish.dish_price) {
+      return (
+        <DishCard
+          id={dish.dish_id}
+          img={dish.dish_img}
+          capt={dish.dish_desc}
+          title={dish.dish}
+          price={dish.dish_price}
+        />
+      );
+    }
+  });
+
   return (
     <div className="restaurantDisplay">
-      <div className="resaturantsCategory">
-        {/* {dishesUi} */}
-        <DishCard/>
-        </div>
+      <div className="dishesContainer">{dishesUi}</div>
     </div>
   );
 }
