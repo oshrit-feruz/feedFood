@@ -1,24 +1,30 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Avatar from '@mui/material/Avatar';
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Avatar from "@mui/material/Avatar";
 
-import { CCard ,CCardImage,CCol,CRow,CCardBody,CCardText,CCardTitle} from "@coreui/bootstrap-react";
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import Skeleton from '@mui/material/Skeleton';
+import {
+  CCard,
+  CCardImage,
+  CCol,
+  CRow,
+  CCardBody,
+  CCardText,
+  CCardTitle,
+} from "@coreui/bootstrap-react";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Skeleton from "@mui/material/Skeleton";
 
- function Media(props) {
+function Media(props) {
   const { loading = false } = props;
 
   return (
     <Card sx={{ maxWidth: 345, m: 2 }}>
       <CardHeader
-
-
         title={
           loading ? (
             <Skeleton
@@ -28,14 +34,14 @@ import Skeleton from '@mui/material/Skeleton';
               style={{ marginBottom: 6 }}
             />
           ) : (
-            'Ted'
+            "Ted"
           )
         }
         subheader={
           loading ? (
             <Skeleton animation="wave" height={10} width="40%" />
           ) : (
-            '5 hours ago'
+            "5 hours ago"
           )
         }
       />
@@ -52,7 +58,11 @@ import Skeleton from '@mui/material/Skeleton';
       <CardContent>
         {loading ? (
           <React.Fragment>
-            <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
+            <Skeleton
+              animation="wave"
+              height={10}
+              style={{ marginBottom: 6 }}
+            />
             <Skeleton animation="wave" height={10} width="80%" />
           </React.Fragment>
         ) : (
@@ -69,27 +79,21 @@ import Skeleton from '@mui/material/Skeleton';
 
 export default function DishCard(props) {
   return (
-    <div id={props.id}>
-<CCard className="mb-3" >
-  <CRow className="g-0">
-    <CCol md={4}>
-      <CCardImage src={props.img}/>
-    </CCol>
-    <CCol md={8}>
-      <CCardBody>
-        <CCardTitle>{props.title}</CCardTitle>
-        <CCardText>{props.capt}</CCardText>
-        <CCardText>
-          <small className="text-medium-emphasis">{props.price}</small>
-        </CCardText>
-      </CCardBody>
-    </CCol>
-  </CRow>
-</CCard>
-
-      {/* <Media loading />
-      <Media /> */}
-    </div>
+    <CCard className="mb-3" id={props.id}>
+      <CRow className="g-0">
+        <CCol md={4}>
+          <CCardImage src={props.img} />
+        </CCol>
+        <CCol md={8}>
+          <CCardBody>
+            <CCardTitle>{props.title}</CCardTitle>
+            <CCardText>{props.capt}</CCardText>
+            <CCardText>
+              <small className="text-medium-emphasis">{props.price}</small>
+            </CCardText>
+          </CCardBody>
+        </CCol>
+      </CRow>
+    </CCard>
   );
 }
-

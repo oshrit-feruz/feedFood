@@ -40,12 +40,20 @@ client.connect();
 
 export async function insertNewUser(userData: user) {
     let insertUsersTable = `INSERT INTO users(user_name,password,phone_number,email,city,street) VALUES ($1, $2, $3, $4, $5, $6)`;
-    await client.query(insertUsersTable, [userData.name, userData.password, userData.phoneNumber, userData.email, userData.city, userData.street])
+    let res = await client.query(insertUsersTable, [userData.name, userData.password, userData.phoneNumber, userData.email, userData.city, userData.street])
+    console.log(res +"response from db");
+    
 }
 
 export async function checkUser(userData: user) {
-    let checkUsersTable = `select user_id from users where email=$1 and password=$2;`;
-    await client.query(checkUsersTable, [userData.email, userData.password])
+    console.log(userData);
+    let checkUsersTable = `select * from users where email=$1 and password=$2;`;
+    const result = await client.query(checkUsersTable, [userData.email, userData.password])
+    console.log(result)
+    const userId = result.rows.map((order: any) => Object.assign(order))
+    console.log(userId);
+    
+    return userId[0]
 }
 
 // export async function deleteSock(number: Number) {

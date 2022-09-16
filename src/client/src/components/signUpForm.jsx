@@ -2,7 +2,7 @@
 import Button from "@mui/material/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import {
   textValidate,
@@ -11,7 +11,7 @@ import {
   emailValidate,
 } from "react-validations-components";
 
-function SignUpFunc() {
+function SignUpFunc(props) {
   const existEmailInput = useRef(null);
   const existPasswordInput = useRef(null);
   const nameInput = useRef(null);
@@ -49,15 +49,28 @@ function SignUpFunc() {
           email: existEmailInput.current.value,
           password: existPasswordInput.current.value,
         });
-        axios
-          .get("/checkUser", existUser)
-          .then((res) => alert(res.data.response), handleCloseSignIn())
-          .catch((err) => alert("הכניסה נכשלה- אנא נסה שוב "));
       } else alert("סיסמא לא תקינה - אנא מלא את הסיסמא עם מספרים ואותיות");
     } else {
       alert("אימייל לא תקין- אנא הכנס אימייל תקין");
     }
   };
+  useEffect(() => {
+    if (existUser.password !== "") {
+      axios
+        .post("/checkUser", existUser)
+        .then((res) => {
+          console.log(res.data)
+          if (res.data = "") {
+            alert("האימייל או הסיסמה לא נכונים- אנא נסה שוב");
+          } else {
+            props.setUser(res.data);
+            handleCloseSignIn();
+          }
+        })
+        .catch((err) => alert("הכניסה נכשלה- אנא נסה שוב "));
+    }
+  }, [existUser]);
+
   const signUp = () => {
     nameInput.current.focus();
     emailInput.current.focus();
@@ -65,27 +78,29 @@ function SignUpFunc() {
     cityInput.current.focus();
     streetInput.current.focus();
     phoneNumberInput.current.focus();
-
-    if (textValidate(nameInput.current.value).status & (newUser.name !== "")) {
+    if (
+      textValidate(nameInput.current.value).status &
+      (nameInput.current.value !== "")
+    ) {
       if (
         emailValidate(emailInput.current.value).status &
-        (newUser.email !== "")
+        (emailInput.current.value !== "")
       ) {
         if (
           textNumberValidate(passwordInput.current.value).status &
-          (newUser.password !== "")
+          (passwordInput.current.value !== "")
         ) {
           if (
             textValidate(cityInput.current.value).status &
-            (newUser.city !== "")
+            (cityInput.current.value !== "")
           ) {
             if (
               textNumberValidate(streetInput.current.value).status &
-              (newUser.street !== "")
+              (streetInput.current.value !== "")
             ) {
               if (
                 numValidate(phoneNumberInput.current.value).status &
-                (newUser.phoneNumber !== null)
+                (phoneNumberInput.current.value !== null)
               ) {
                 setNewUser({
                   name: nameInput.current.value,
@@ -96,10 +111,6 @@ function SignUpFunc() {
                   street: streetInput.current.value,
                 });
                 console.log(newUser);
-                axios
-                  .post("/insertUser", newUser)
-                  .then((res) => alert(res.data.response), handleCloseSignUp())
-                  .catch((err) => alert("ההרשמה נכשלה- אנא נסה שוב"));
               } else alert("מספר טלפון לא תקין- אנא הכנס רק מספרים");
             } else alert("שם רחוב לא תקין- אנא הכנס את שם הרחוב והמספר");
           } else alert("שם העיר אינו תקין- אנא הכנס עיר");
@@ -115,6 +126,16 @@ function SignUpFunc() {
   const handleShowSignUp = () => setShowSignUp(true);
   const handleCloseSignIn = () => setShowSignIn(false);
   const handleShowSignIn = () => setShowSignIn(true);
+
+  useEffect(() => {
+    if (newUser.phoneNumber !== null) {
+      axios
+        .post("/insertUser", newUser)
+        .then((res) => handleCloseSignUp())
+        .catch((err) => alert("ההרשמה נכשלה- אנא נסה שוב"));
+    }
+  }, [newUser]);
+
   return (
     <>
       <Button
@@ -146,7 +167,7 @@ function SignUpFunc() {
           </Modal.Header>
 
           <Modal.Body>
-            <Form.Group className="mb-3" controlId="form">
+            <Form.Group className="mb-2" controlId="form">
               <Form.Label>שם מלא</Form.Label>
               <Form.Control
                 type="name"
@@ -154,7 +175,7 @@ function SignUpFunc() {
                 ref={nameInput}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-2" controlId="formBasicEmail">
               <Form.Label>כתובת מייל</Form.Label>
               <Form.Control
                 type="email"
@@ -163,7 +184,7 @@ function SignUpFunc() {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-2" controlId="formBasicPassword">
               <Form.Label>סיסמא</Form.Label>
               <Form.Control
                 type="password"
@@ -171,15 +192,15 @@ function SignUpFunc() {
                 ref={passwordInput}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="form">
+            <Form.Group className="mb-2" controlId="form">
               <Form.Label>עיר </Form.Label>
               <Form.Control type="City" ref={cityInput} />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="form">
+            <Form.Group className="mb-2" controlId="form">
               <Form.Label>רחוב</Form.Label>
               <Form.Control type="street" ref={streetInput} />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="form">
+            <Form.Group className="mb-2" controlId="form">
               <Form.Label>מספר טלפון</Form.Label>
               <Form.Control
                 type="phone"
@@ -187,7 +208,7 @@ function SignUpFunc() {
                 ref={phoneNumberInput}
               />
             </Form.Group>
-            <Button variant="primary" type="button" onClick={signUp}>
+            <Button variant="outlined" type="button" onClick={signUp}>
               הירשם
             </Button>
           </Modal.Body>
@@ -205,7 +226,7 @@ function SignUpFunc() {
           </Modal.Header>
 
           <Modal.Body>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-2" controlId="formBasicEmail">
               <Form.Label>כתובת מייל</Form.Label>
               <Form.Control
                 type="email"
@@ -214,7 +235,7 @@ function SignUpFunc() {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-2" controlId="formBasicPassword">
               <Form.Label>סיסמא</Form.Label>
               <Form.Control
                 type="password"

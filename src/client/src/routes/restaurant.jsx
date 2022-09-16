@@ -28,7 +28,8 @@ export default function Dishes(props) {
     getData();
     return () => (mounted = false);
   }, [restaurantName]);
-  const dishesUi = dishes.map((dish) => {
+  const dishesUi =  dishes.map((dish) => {
+    
     if (dish.dish_price) {
       return (
         <DishCard

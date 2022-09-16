@@ -37,6 +37,8 @@ export async function getFavorites() {
   const sql = `select * from restaurants order by RANDOM() limit 30;`;
   const result = await client.query(sql);
   const restaurants = result.rows.map((order: any) => Object.assign(order));
+  console.log(restaurants);
+  
   return restaurants
 }
 export async function getDesserts() {

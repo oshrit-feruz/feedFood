@@ -13,8 +13,15 @@ export default function RestaurantCard(props) {
         }}
       >
         <Card.Img variant="top" src={props.img} />
+      </Link>
         <Card.Body>
-          <Card.Title>{props.title}</Card.Title>
+        <Link
+        to="/restaurant"
+        state={{
+          restaurantName: props.title,
+        }}
+      >
+          <Card.Title>{props.title}</Card.Title></Link>
           <Card.Text className="tags">{props.capt}</Card.Text>
           <Button variant="solid" disabled>
             20-30 min
@@ -23,7 +30,6 @@ export default function RestaurantCard(props) {
             {Math.floor(Math.random() * 30 + 20)}{" "}
           </div>
         </Card.Body>
-      </Link>
     </Card>
   );
 }

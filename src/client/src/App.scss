@@ -7,6 +7,18 @@ body {
   // align-items: center;
   font-family: "Open Sans", sans-serif;
 }
+.card h5 {
+  color: #2b3041;
+  font-weight: 700;
+  font-size: 1.2em;
+  letter-spacing: 0.04em;
+  margin: 0.4em 0 0 0;
+  text-transform: uppercase;
+}
+.card-body {
+  direction: rtl;
+  padding: 5px;
+}
 .row{
   align-items: center;
 }

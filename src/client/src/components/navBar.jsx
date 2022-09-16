@@ -30,8 +30,15 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { useState ,useEffect} from "react";
 
 function NavBar() {
+  const [user,setUser]=useState(null)
+  useEffect(() => {
+    
+  console.log(user)
+  }, [user])
+  
   return (
     <Navbar bg="white" expand="lg">
       <Container fluid>
@@ -47,11 +54,14 @@ function NavBar() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
+            {/* {if (condition) {
+              
+            }} */}
             <Nav.Link>
               <Formik />
             </Nav.Link>
             <Nav.Link>
-              <SignUpFunc />
+              <SignUpFunc setUser={setUser}/>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
