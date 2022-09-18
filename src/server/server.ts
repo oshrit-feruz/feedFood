@@ -32,6 +32,7 @@ app.get('/getDesserts', (_req: Request, res: any) => {
 })
 app.post('/checkUser', (req: any, res: any) => {
   const userData = req.body;
+  console.log(userData)
   checkUser(userData).then((userDb) => res.json(userDb))
 })
 app.get('/getByCategory/:category', (req: any, res: any) => {

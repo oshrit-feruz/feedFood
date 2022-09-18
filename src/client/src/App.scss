@@ -19,7 +19,7 @@ body {
   direction: rtl;
   padding: 5px;
 }
-.row{
+.row {
   align-items: center;
 }
 h1,
@@ -136,7 +136,15 @@ body {
   direction: rtl;
   text-align: center;
 }
-
+#welcome {
+  padding: '10px';
+  font-size: '17px';
+  border-radius: '9px';
+  margin: '7px';
+  color: 'black';
+  border-radius: '9px';
+  background-color: '#d6dfe4';
+}
 h1 {
   text-align: center;
   text-transform: uppercase;

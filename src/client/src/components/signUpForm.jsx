@@ -60,9 +60,10 @@ function SignUpFunc(props) {
         .post("/checkUser", existUser)
         .then((res) => {
           console.log(res.data)
-          if (res.data = "") {
+          if (res.data == "") {
             alert("האימייל או הסיסמה לא נכונים- אנא נסה שוב");
           } else {
+            console.log("first")
             props.setUser(res.data);
             handleCloseSignIn();
           }
