@@ -5,7 +5,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 export default function RestaurantCard(props) {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card >
       <Link
         to="/restaurant"
         state={{

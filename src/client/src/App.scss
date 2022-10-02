@@ -56,7 +56,7 @@ h5 {
 
 .card {
   background: #fff;
-  width: 24em;
+  width: 90%;
   border-radius: 0.6em;
   margin: 1em;
   overflow: hidden;
@@ -374,6 +374,9 @@ fieldset:disabled .btn {
 }
 .cardFooter {
   border-top: 0.0925rem dashed rgba(32, 33, 37, 0.282);
+}
+.img-empty{
+  width:100px
 }
 
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap');
