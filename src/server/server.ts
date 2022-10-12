@@ -1,19 +1,18 @@
 import process from "process";
-// import cors from 'cors'
 import { checkUser, insertNewUser } from "./dbAdmin";
 import getRestaurants, { dishesByRestaurant, getByCategory, getDesserts, getFavorites } from "./getDb";
-// import { insertNewUser } from "./dbAdmin";
-// import { getUserOrder } from './getDb';
 
 const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json();
-
 const express = require('express');
 const path = require('path');
-const port = process.env.PORT || 3002;
 const app = express();
 app.use(jsonParser);
 app.use(bodyParser.json());
+
+const root: string = path.join(process.cwd(), 'client');
+
+app.use(express.static(root));
 // app.use(cors())
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'))
@@ -46,39 +45,12 @@ app.get('/restaurant/:restaurantName', (req: any, res: any) => {
 
   dishesByRestaurant(restaurantName).then((dishes) => res.json(dishes))
 })
-// app.get('/getUser/:number', (req: any, response: any) => {
-//   const number = Number(req.params.number);
-//   getUserData(number).then((user) => response.json(user));
-// });
 app.post('/insertUser', (request: any, response: any) => {
   const userData = request.body;
   console.log(userData + "res from server");
   insertNewUser(userData)
   response.send(({ response: 'you succsess!' }))
 })
-// app.get('/getOrders/:number', (req: any, response: any) => {
-//   const number = Number(req.params.number);
-//   getUserOrder(number).then((orders) => response.json(orders));
-// });
-// app.post('/addToUsers', (request: any, response:any) => {
-//   const userData = request.body;
-//   // addUser(userData)
-//   response.send({ word: 'you succsess!' })
-// });
-// app.delete('/deleteLocationHistory:number', (req: any, _res: any) => {
-//   const number = Number(req.params.number);
-//   deleteLocationHistory(number)
-// })
-
-
-// app.get('/locations-history', function (_req: any, res: any) { // serve main path as static file
-//   res.sendFile(path.join(__dirname, '../client/index.html'));
-// });
-
-// app.get('/add-new', function (_req: any, res: any) { // serve main path as static file
-//   res.sendFile(path.join(__dirname, '../client/admin.html'));
-// });
-
-app.listen(port || 3002, () => {
-  console.log('listen to port ' + port);
+app.listen(process.env.PORT || 3002, function(){
+  console.log("Express server work!");
 });
