@@ -36,7 +36,7 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const express = require('express');
 const path = require('path');
-const port = process_1.default.env.PORT || 3002;
+const port = process_1.default.env.PORT;
 const app = express();
 app.use(jsonParser);
 app.use(bodyParser.json());
