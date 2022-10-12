@@ -36,7 +36,7 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const express = require('express');
 const path = require('path');
-const port = process_1.default.env.PORT;
+const port = process_1.default.env.PORT || 3002;
 const app = express();
 app.use(jsonParser);
 app.use(bodyParser.json());
@@ -100,7 +100,7 @@ app.post('/insertUser', (request, response) => {
 // app.get('/add-new', function (_req: any, res: any) { // serve main path as static file
 //   res.sendFile(path.join(__dirname, '../client/admin.html'));
 // });
-app.listen(port || 3002, () => {
-    console.log('listen to port ' + port);
+app.listen(process_1.default.env.PORT || 3002, function () {
+    console.log("Express server listening on port %d in %s mode");
 });
 //# sourceMappingURL=server.js.map
