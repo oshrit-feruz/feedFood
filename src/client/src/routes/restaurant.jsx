@@ -7,10 +7,10 @@ import axios from "axios";
 import { useLocation, useParams } from "react-router-dom";
 import Facebook from "../components/dishCard";
 import DishCard from "../components/dishCard";
-export default function Dishes(props) {
+export default function Restaurant(props) {
   const { handle } = useParams();
   const location = useLocation();
-  const [dishes, setDishes] = useState([]);
+  const [dishsList, setDishsList] = useState([]);
 
   const restaurantName = location.state?.restaurantName;
   console.log(restaurantName);
@@ -20,25 +20,38 @@ export default function Dishes(props) {
       axios
         .get(`/restaurant/${restaurantName}`)
         .then((res) => {
-          setDishes(res.data);
-          console.log(res.data);
+          setDishsList(res.data);
         })
         .catch((err) => alert(`failed to get data please try again`));
     }
     getData();
     return () => (mounted = false);
   }, [restaurantName]);
-  const dishesUi =  dishes.map((dish) => {
-    
+  const dishesUi = dishsList.map((dish) => {
     if (dish.dish_price) {
       return (
-        <DishCard
-          id={dish.dish_id}
-          img={dish.dish_img}
-          capt={dish.dish_desc}
-          title={dish.dish}
-          price={dish.dish_price}
-        />
+        <div
+          onClick={() =>
+            // props.dishsList.push('new value')
+            props.setDishs((current) => [
+              ...current,
+              {
+                img: dish.dish_img,
+                title: dish.dish,
+                capt: dish.dish_desc,
+                price: dish.dish_price,
+              },
+            ])
+          }
+        >
+          <DishCard
+            id={dish.dish_id}
+            img={dish.dish_img}
+            capt={dish.dish_desc}
+            title={dish.dish}
+            price={dish.dish_price}
+          />
+        </div>
       );
     }
   });

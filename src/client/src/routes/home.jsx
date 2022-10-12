@@ -75,8 +75,6 @@ export default function Home(props) {
   return (
 
     <div className="restaurantDisplay">
-      {/* <Facebook/> */}
-      {/* {favoriteUi} */}
       <div className="carouselDuo">
         <h4>המסעדות המומלצות</h4>
         <LargeCarousel card={favoriteUi} />
@@ -94,9 +92,6 @@ export default function Home(props) {
         <LargeCarousel card={popularUi} />
       </div>
       <LargeCarousel card={dessertsUi} />
-      {/* <LargeCarousel card={favoriteUi} />
-      <LargeCarousel card={favoriteUi} /> */}
-      {/* <LargeCarousel/> */}
     </div>
   );
 }

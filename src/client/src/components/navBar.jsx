@@ -12,18 +12,33 @@ import { useState, useEffect } from "react";
 import { BsFillCartFill } from "react-icons/bs";
 import LocationSearch from "../components/locationSearch";
 
-function NavBar() {
+import {
+  CCard,
+  CCardImage,
+  CCol,
+  CRow,
+  CCardBody,
+  CCardText,
+  CCardTitle,
+} from "@coreui/bootstrap-react";
+function NavBar(props) {
   const [user, setUser] = useState(null);
   useEffect(() => {
+    props.orderList.length = 0;
+  }, []);
+
+  useEffect(() => {
+    console.log(props.orderList);
     console.log(user);
-  }, [user]);
+  }, [user, props.orderList]);
 
   const handleLogOut = () => setUser(null);
+
   return (
     <Navbar bg="white" expand="lg">
       <Container fluid>
         <Navbar.Brand>
-          <Link to="/home">
+          <Link to="/">
             <img className="logo" src={logo} alt="" />
           </Link>
         </Navbar.Brand>
@@ -87,14 +102,42 @@ function NavBar() {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <div id="emptyImgText">
-              <img
-                id="img-empty"
-                src="https://store.r2graphics.com/content/images/empty-cart.png"
-                alt="empty-cart"
-              />
-              <h6>Your cart is empty!</h6>
-            </div>
+            {props.orderList.length === 0 ? (
+              <div id="emptyImgText">
+                <img
+                  id="img-empty"
+                  src="https://store.r2graphics.com/content/images/empty-cart.png"
+                  alt="empty-cart"
+                />
+                <h6>Your cart is empty!</h6>
+              </div>
+            ) : (
+              props.orderList.map((dish) => (
+                <>
+                  <CCard className="mb-3" style={{ width: "430px" }}>
+                    <CRow className="g-0" style={{ width: "430px" }}>
+                      <CCol md={4}>
+                        <CCardImage
+                          src={dish.img}
+                          style={{ padding: "11px", width: "132px" }}
+                        />
+                      </CCol>
+                      <CCol md={8}>
+                        <CCardBody>
+                          <CCardTitle>{dish.title}</CCardTitle>
+                          <CCardText>{dish.capt}</CCardText>
+                          <CCardText>
+                            <small className="text-medium-emphasis">
+                              {dish.price}
+                            </small>
+                          </CCardText>
+                        </CCardBody>
+                      </CCol>
+                    </CRow>
+                  </CCard>
+                </>
+              ))
+            )}
           </Dropdown.Menu>
         </Dropdown>
       </Container>

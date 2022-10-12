@@ -11,12 +11,8 @@ import { useLocation, useParams } from "react-router-dom";
 export default function Category(props) {
   const { handle } = useParams();
   const location = useLocation();
-  // const chossenCategory  = location.state;
   const [restaurants, setRestaurants] = useState([]);
-
   const chossenCategory = location.state?.chossenCategory;
-
-  // console.log(chossenCategory);
   useEffect(() => {
     let mounted = true;
     function getData() {

@@ -89,11 +89,7 @@ export default function DishCard(props) {
             <CCardTitle>{props.title}</CCardTitle>
             <CCardText>{props.capt}</CCardText>
             <CCardText>
-              <i class="bi bi-plus-circle-dotted"></i>
-              <i class="bi bi-plus-circle-dotted"></i>
-              <i class="bi bi-plus-circle-dotted"></i>
-              <i class="bi bi-plus-circle-dotted"></i>
-              <small className="text-medium-emphasis">{props.price}</small>
+              <medium className="text-medium-emphasis">{props.price}</medium>
             </CCardText>
           </CCardBody>
         </CCol>
