@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f8b31dd2.css",
+    "main.js": "/static/js/main.f5c80113.js",
+    "static/media/hummus.png": "/static/media/hummus.637ed72d8d7afa3ce402.png",
+    "static/media/logo.jpg": "/static/media/logo.f66696e26c3da86b269a.jpg",
+    "static/media/fish.png": "/static/media/fish.5ca2ea7379e4955ca527.png",
+    "static/media/meat.png": "/static/media/meat.b1f4d7201fbf9cd011f9.png",
+    "static/media/tako.png": "/static/media/tako.a6f3a1a435a2e6ba9bcf.png",
+    "static/media/dessert.png": "/static/media/dessert.f842ca2a54f7a1308527.png",
+    "static/media/pizza.png": "/static/media/pizza.74e2d951fbd20bdc76d5.png",
+    "static/media/italian.png": "/static/media/italian.a716a02d9f142928bf63.png",
+    "static/media/asian.png": "/static/media/asian.7cf84f739cbf3ac6a7b6.png",
+    "static/media/sushi.png": "/static/media/sushi.b1d0df079c14b08ba5d9.png",
+    "static/media/burger.png": "/static/media/burger.43c5c1b2a5a8b3b1cd31.png",
+    "index.html": "/index.html",
+    "main.f8b31dd2.css.map": "/static/css/main.f8b31dd2.css.map",
+    "main.f5c80113.js.map": "/static/js/main.f5c80113.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f8b31dd2.css",
+    "static/js/main.f5c80113.js"
+  ]
+}
