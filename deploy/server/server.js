@@ -40,6 +40,8 @@ const port = process_1.default.env.PORT || 3002;
 const app = express();
 app.use(jsonParser);
 app.use(bodyParser.json());
+const root = path.join(process_1.default.cwd(), 'client');
+app.use(express.static(root));
 // app.use(cors())
 if (process_1.default.env.NODE_ENV === 'production') {
     app.use(express.static('build'));
