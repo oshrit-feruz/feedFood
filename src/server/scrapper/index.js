@@ -302,7 +302,7 @@ exports.client = void 0;
 const pg_1 = require("pg");
 const dotenv1 = require("dotenv");
 dotenv1.config();
-const DATABASE_URL = 'postgres://gvhjyjkoynzqhv:57070f324e39dea9ccb92c9cc09c6f5c9a43c3e4200e18ad5ba44ec97ff17f59@ec2-107-23-76-12.compute-1.amazonaws.com:5432/d8b0hqt6iq0oou';
+const DATABASE_URL = 'postgres://lnykjkghyjyjsz:6a9e887d780c76ccb3f0b73b2639cff9e74d1fd9fa7c5e992b5f8577a667c299@ec2-44-210-50-83.compute-1.amazonaws.com:5432/d6rinj1aqu5m4s';
 let client = new pg_1.Client({
   connectionString: DATABASE_URL,
   ssl: {
