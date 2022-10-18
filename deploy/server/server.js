@@ -43,7 +43,7 @@ app.use(bodyParser.json());
 // app.use(cors())
 if (process_1.default.env.NODE_ENV === 'production') {
     app.use(express.static('build'));
-    app.get('/', (_req, res) => {
+    app.get('*', (_req, res) => {
         res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
     });
 }
