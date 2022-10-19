@@ -1,25 +1,20 @@
 import process from "process";
-// import cors from 'cors'
 import { checkUser, insertNewUser } from "./dbAdmin";
 import getRestaurants, { dishesByRestaurant, getByCategory, getDesserts, getFavorites } from "./getDb";
-// import { insertNewUser } from "./dbAdmin";
-// import { getUserOrder } from './getDb';
 
 const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json();
-
 const express = require('express');
 const path = require('path');
 const port = process.env.PORT || 3002;
 const app = express();
 app.use(jsonParser);
 app.use(bodyParser.json());
-// app.use(cors())
 
-app.use(express.static('build'))
-app.get('*', (_req: any, res: any) => {
-  res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
-})
+// app.use(express.static('build'))
+// app.get('*', (_req: any, res: any) => {
+//   res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+// })
 app.get('/getRestaurants', (_req: Request, res: any) => {
   getRestaurants().then((restaurants) => res.json(restaurants))
 })
@@ -78,6 +73,12 @@ app.post('/insertUser', (request: any, response: any) => {
 // app.get('/add-new', function (_req: any, res: any) { // serve main path as static file
 //   res.sendFile(path.join(__dirname, '../client/admin.html'));
 // });
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('build'));
+  app.get('*', (_req: any, res: any) => {
+    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+  });
+}
 
 app.listen(port || 3002, () => {
   console.log('listen to port ' + port);
