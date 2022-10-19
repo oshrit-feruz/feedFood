@@ -15,12 +15,10 @@ const app = express();
 app.use(jsonParser);
 app.use(bodyParser.json());
 // app.use(cors())
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('build'))
-  app.get('*', (_req: any, res: any) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
-  })
-}
+app.use(express.static('build'))
+app.get('/', (_req: any, res: any) => {
+  res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+})
 app.get('/getRestaurants', (_req: Request, res: any) => {
   getRestaurants().then((restaurants) => res.json(restaurants))
 })
