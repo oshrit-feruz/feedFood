@@ -41,7 +41,7 @@ const app = express();
 app.use(jsonParser);
 app.use(bodyParser.json());
 if (process_1.default.env.NODE_ENV === 'production') {
-    app.use(express.static('build'));
+    app.use(express.static(__dirname + '../build'));
     app.get('/', (_req, res) => {
         console.log(__dirname);
         res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
