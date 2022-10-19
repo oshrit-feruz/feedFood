@@ -43,29 +43,29 @@ app.use(bodyParser.json());
 // app.use(cors())
 if (process_1.default.env.NODE_ENV === 'production') {
     app.use(express.static('build'));
-    app.get('https://feed-food.herokuapp.com/*', (_req, res) => {
+    app.get('*', (_req, res) => {
         res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
     });
 }
-app.get('https://feed-food.herokuapp.com/getRestaurants', (_req, res) => {
+app.get('/getRestaurants', (_req, res) => {
     (0, getDb_1.default)().then((restaurants) => res.json(restaurants));
 });
-app.get('https://feed-food.herokuapp.com/getFavorites', (_req, res) => {
+app.get('/getFavorites', (_req, res) => {
     (0, getDb_1.getFavorites)().then((restaurants) => res.json(restaurants));
 });
-app.get('https://feed-food.herokuapp.com/getDesserts', (_req, res) => {
+app.get('/getDesserts', (_req, res) => {
     (0, getDb_1.getDesserts)().then((restaurants) => res.json(restaurants));
 });
-app.post('https://feed-food.herokuapp.com/checkUser', (req, res) => {
+app.post('/checkUser', (req, res) => {
     const userData = req.body;
     console.log(userData);
     (0, dbAdmin_1.checkUser)(userData).then((userDb) => res.json(userDb));
 });
-app.get('https://feed-food.herokuapp.com/getByCategory/:category', (req, res) => {
+app.get('/getByCategory/:category', (req, res) => {
     let category = req.params.category;
     (0, getDb_1.getByCategory)(category).then((restaurants) => res.json(restaurants));
 });
-app.get('https://feed-food.herokuapp.com/restaurant/:restaurantName', (req, res) => {
+app.get('/restaurant/:restaurantName', (req, res) => {
     let restaurantName = req.params.restaurantName;
     console.log(req);
     console.log("insert");
@@ -75,7 +75,7 @@ app.get('https://feed-food.herokuapp.com/restaurant/:restaurantName', (req, res)
 //   const number = Number(req.params.number);
 //   getUserData(number).then((user) => response.json(user));
 // });
-app.post('https://feed-food.herokuapp.com/insertUser', (request, response) => {
+app.post('/insertUser', (request, response) => {
     const userData = request.body;
     console.log(userData + "res from server");
     (0, dbAdmin_1.insertNewUser)(userData);

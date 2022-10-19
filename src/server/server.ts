@@ -17,29 +17,29 @@ app.use(bodyParser.json());
 // app.use(cors())
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'))
-  app.get('https://feed-food.herokuapp.com/*', (_req: any, res: any) => {
+  app.get('*', (_req: any, res: any) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
   })
 }
-app.get('https://feed-food.herokuapp.com/getRestaurants', (_req: Request, res: any) => {
+app.get('/getRestaurants', (_req: Request, res: any) => {
   getRestaurants().then((restaurants) => res.json(restaurants))
 })
-app.get('https://feed-food.herokuapp.com/getFavorites', (_req: Request, res: any) => {
+app.get('/getFavorites', (_req: Request, res: any) => {
   getFavorites().then((restaurants) => res.json(restaurants))
 })
-app.get('https://feed-food.herokuapp.com/getDesserts', (_req: Request, res: any) => {
+app.get('/getDesserts', (_req: Request, res: any) => {
   getDesserts().then((restaurants) => res.json(restaurants))
 })
-app.post('https://feed-food.herokuapp.com/checkUser', (req: any, res: any) => {
+app.post('/checkUser', (req: any, res: any) => {
   const userData = req.body;
   console.log(userData)
   checkUser(userData).then((userDb) => res.json(userDb))
 })
-app.get('https://feed-food.herokuapp.com/getByCategory/:category', (req: any, res: any) => {
+app.get('/getByCategory/:category', (req: any, res: any) => {
   let category = req.params.category;
   getByCategory(category).then((restaurants) => res.json(restaurants))
 })
-app.get('https://feed-food.herokuapp.com/restaurant/:restaurantName', (req: any, res: any) => {
+app.get('/restaurant/:restaurantName', (req: any, res: any) => {
   let restaurantName = req.params.restaurantName;
   console.log(req);
   console.log("insert");
@@ -50,7 +50,7 @@ app.get('https://feed-food.herokuapp.com/restaurant/:restaurantName', (req: any,
 //   const number = Number(req.params.number);
 //   getUserData(number).then((user) => response.json(user));
 // });
-app.post('https://feed-food.herokuapp.com/insertUser', (request: any, response: any) => {
+app.post('/insertUser', (request: any, response: any) => {
   const userData = request.body;
   console.log(userData + "res from server");
   insertNewUser(userData)
