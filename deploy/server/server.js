@@ -44,7 +44,8 @@ app.use(bodyParser.json());
 if (process_1.default.env.NODE_ENV === 'production') {
     app.use(express.static('build'));
     app.get('*', (_req, res) => {
-        res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+        console.log(__dirname);
+        res.sendFile(path.join(__dirname, '../build', 'index.html'));
     });
 }
 app.get('/getRestaurants', (_req, res) => {
