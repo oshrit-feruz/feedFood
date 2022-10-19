@@ -41,10 +41,12 @@ const app = express();
 app.use(jsonParser);
 app.use(bodyParser.json());
 // app.use(cors())
-app.use(express.static('build'));
-app.get('/', (_req, res) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-});
+if (process_1.default.env.NODE_ENV === 'production') {
+    app.use(express.static('build'));
+    app.get('*', (_req, res) => {
+        res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+    });
+}
 app.get('/getRestaurants', (_req, res) => {
     (0, getDb_1.default)().then((restaurants) => res.json(restaurants));
 });
