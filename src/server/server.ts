@@ -10,7 +10,6 @@ const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json();
 
 const express = require('express');
-const path = require('path');
 const port = process.env.PORT || 3002;
 const app = express();
 app.use(jsonParser);
@@ -18,9 +17,6 @@ app.use(bodyParser.json());
 // app.use(cors())
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'));
-  app.get('/', (_req: any, res: any) => {
-    res.sendFile(path.join(__dirname, '../build', 'index.html'));
-  });
 }
 app.get('/getRestaurants', (_req: Request, res: any) => {
   getRestaurants().then((restaurants) => res.json(restaurants))
