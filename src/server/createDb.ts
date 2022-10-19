@@ -3,9 +3,9 @@ import dotenv from 'dotenv';
 dotenv.config()
 
 
-const DATABASE_URL = process.env.DATABASE_URL
+const DATABASE_URL_2= process.env.DATABASE_URL_2
 export const client = new Client({
-  connectionString: DATABASE_URL,
+  connectionString: DATABASE_URL_2,
   ssl: {
     rejectUnauthorized: false
   }

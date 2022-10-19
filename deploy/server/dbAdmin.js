@@ -7,9 +7,9 @@ exports.checkUser = exports.insertNewUser = exports.client = void 0;
 const pg_1 = require("pg");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-const DATABASE_URL = process.env.DATABASE_URL;
+const DATABASE_URL_2 = process.env.DATABASE_URL_2;
 exports.client = new pg_1.Client({
-    connectionString: DATABASE_URL,
+    connectionString: DATABASE_URL_2,
     ssl: {
         rejectUnauthorized: false
     }

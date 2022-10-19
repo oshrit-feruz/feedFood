@@ -4,7 +4,7 @@ declare global {
     interface ProcessEnv {
       NODE_ENV: string;
       PORT: string;
-      DATABASE_URL: string;
+      DATABASE_URL_2: string;
     }
   }
 }
