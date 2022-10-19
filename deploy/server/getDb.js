@@ -14,7 +14,7 @@ exports.client = new pg_1.Client({
         rejectUnauthorized: false
     }
 });
-exports.client.connect().catch(err => console.log(err));
+exports.client.connect();
 async function getUserOrder(user_id) {
     const sql = `SELECT * FROM orders WHERE user_id=$1 ;`;
     const result = await exports.client.query(sql, [user_id]);

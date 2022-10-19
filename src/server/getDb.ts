@@ -11,7 +11,7 @@ export const client = new Client({
   }
 });
 
-client.connect().catch(err => console.log(err));
+client.connect();
 
 export async function getUserOrder(user_id: number) {
   const sql = `SELECT * FROM orders WHERE user_id=$1 ;`;
@@ -38,7 +38,6 @@ export async function getFavorites() {
   const result = await client.query(sql);
   const restaurants = result.rows.map((order: any) => Object.assign(order));
   console.log(restaurants);
-
   return restaurants
 }
 export async function getDesserts() {
