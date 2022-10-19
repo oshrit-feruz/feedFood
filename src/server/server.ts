@@ -15,6 +15,11 @@ const app = express();
 app.use(jsonParser);
 app.use(bodyParser.json());
 // app.use(cors())
+
+app.use(express.static('build'))
+app.get('*', (_req: any, res: any) => {
+  res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+})
 app.get('/getRestaurants', (_req: Request, res: any) => {
   getRestaurants().then((restaurants) => res.json(restaurants))
 })
@@ -74,13 +79,6 @@ app.post('/insertUser', (request: any, response: any) => {
 //   res.sendFile(path.join(__dirname, '../client/admin.html'));
 // });
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('build'))
-  app.get('*', (_req: any, res: any) => {
-    console.log(__dirname);
-    res.sendFile(path.join(__dirname, '../build', 'index.html'))
-  })
-}
 app.listen(port || 3002, () => {
   console.log('listen to port ' + port);
 });
