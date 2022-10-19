@@ -5,6 +5,7 @@ import getRestaurants, { dishesByRestaurant, getByCategory, getDesserts, getFavo
 // import { insertNewUser } from "./dbAdmin";
 // import { getUserOrder } from './getDb';
 
+
 const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json();
 
@@ -17,7 +18,7 @@ app.use(bodyParser.json());
 // app.use(cors())
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'))
-  app.get('*', (_req: any, res: any) => {
+  app.get('/', (_req: any, res: any) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
   })
 }
@@ -32,6 +33,7 @@ app.get('/getDesserts', (_req: Request, res: any) => {
 })
 app.post('/checkUser', (req: any, res: any) => {
   const userData = req.body;
+  console.log(userData)
   checkUser(userData).then((userDb) => res.json(userDb))
 })
 app.get('/getByCategory/:category', (req: any, res: any) => {

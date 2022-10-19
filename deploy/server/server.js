@@ -43,8 +43,8 @@ app.use(bodyParser.json());
 // app.use(cors())
 if (process_1.default.env.NODE_ENV === 'production') {
     app.use(express.static('build'));
-    app.get('*', (_req, res) => {
-        res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+    app.get('/', (_req, res) => {
+        res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
     });
 }
 app.get('/getRestaurants', (_req, res) => {
@@ -58,6 +58,7 @@ app.get('/getDesserts', (_req, res) => {
 });
 app.post('/checkUser', (req, res) => {
     const userData = req.body;
+    console.log(userData);
     (0, dbAdmin_1.checkUser)(userData).then((userDb) => res.json(userDb));
 });
 app.get('/getByCategory/:category', (req, res) => {
