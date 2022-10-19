@@ -6,17 +6,16 @@
 .pnp.js
 /.env
 /dist
-/deploy
+# /deploy
 
 # testing
 /coverage
 /node_modules
 /dist
-/deploy
+# /deploy
 /.vscode
 
 # production
-/build
 
 # misc
 .DS_Store
