@@ -41,13 +41,6 @@ const app = express();
 app.use(jsonParser);
 app.use(bodyParser.json());
 // app.use(cors())
-if (process_1.default.env.NODE_ENV === 'production') {
-    app.use(express.static('build'));
-    app.get('*', (_req, res) => {
-        console.log(__dirname);
-        res.sendFile(path.join(__dirname, '../build', 'index.html'));
-    });
-}
 app.get('/getRestaurants', (_req, res) => {
     (0, getDb_1.default)().then((restaurants) => res.json(restaurants));
 });
@@ -101,6 +94,13 @@ app.post('/insertUser', (request, response) => {
 // app.get('/add-new', function (_req: any, res: any) { // serve main path as static file
 //   res.sendFile(path.join(__dirname, '../client/admin.html'));
 // });
+if (process_1.default.env.NODE_ENV === 'production') {
+    app.use(express.static('build'));
+    app.get('*', (_req, res) => {
+        console.log(__dirname);
+        res.sendFile(path.join(__dirname, '../build', 'index.html'));
+    });
+}
 app.listen(port || 3002, () => {
     console.log('listen to port ' + port);
 });
