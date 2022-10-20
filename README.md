@@ -11,8 +11,9 @@ The server side is written in TypeScript and compiled into NodeJS through a gulp
 I  Scrape food delivery Websites Using Node.js and Puppeteer 
 to store the data in my DB( PostgreSQL ) and used google API to render the restaurants by location.
  ## How to run the project 
- 1. git clone
- 2. npm ci
- 3. In one terminal run :'npm run server'
- 4. In other terminal run : 'npm run start'
-
+```bash
+ git clone
+ npm ci
+ in one terminal run :'npm run server'
+ in other terminal run : 'npm run start'
+```
