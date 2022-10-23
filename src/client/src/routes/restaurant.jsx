@@ -32,7 +32,6 @@ export default function Restaurant(props) {
       return (
         <div
           onClick={() =>
-            // props.dishsList.push('new value')
             props.setDishs((current) => [
               ...current,
               {

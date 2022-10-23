@@ -1,9 +1,6 @@
 import process from "process";
-// import cors from 'cors'
 import { checkUser, insertNewUser } from "./dbAdmin";
 import getRestaurants, { dishesByRestaurant, getByCategory, getDesserts, getFavorites } from "./getDb";
-// import { insertNewUser } from "./dbAdmin";
-// import { getUserOrder } from './getDb';
 
 
 const bodyParser = require('body-parser')
@@ -60,25 +57,8 @@ app.post('/insertUser', (request: any, response: any) => {
 // app.get('/getOrders/:number', (req: any, response: any) => {
 //   const number = Number(req.params.number);
 //   getUserOrder(number).then((orders) => response.json(orders));
-// });
-// app.post('/addToUsers', (request: any, response:any) => {
-//   const userData = request.body;
-//   // addUser(userData)
-//   response.send({ word: 'you succsess!' })
-// });
-// app.delete('/deleteLocationHistory:number', (req: any, _res: any) => {
-//   const number = Number(req.params.number);
-//   deleteLocationHistory(number)
 // })
 
-
-// app.get('/locations-history', function (_req: any, res: any) { // serve main path as static file
-//   res.sendFile(path.join(__dirname, '../client/index.html'));
-// });
-
-// app.get('/add-new', function (_req: any, res: any) { // serve main path as static file
-//   res.sendFile(path.join(__dirname, '../client/admin.html'));
-// });
 
 app.listen(port || 3002, () => {
   console.log('listen to port ' + port);

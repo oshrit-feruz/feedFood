@@ -1,9 +1,6 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { React, useEffect, useState } from "react";
-
 import TextField from "@mui/material/TextField";
-// import Button from "@mui/joy/Button";
-
 import LargeCarousel from "../components/largeCarousel";
 import RestaurantCard from "../components/restaurantCard";
 import axios from "axios";

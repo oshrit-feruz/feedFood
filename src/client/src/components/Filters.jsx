@@ -1,5 +1,3 @@
-// import init from "./rff";
-
 import Category from "../routes/Category";
 import { Outlet, Link, Routes, Route } from "react-router-dom";
 import axios from "axios";

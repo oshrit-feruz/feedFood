@@ -1,4 +1,3 @@
-// import init from "./rff";
 import "./App.css";
 import axios from "axios";
 import Home from "./routes/home";
