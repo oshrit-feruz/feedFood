@@ -72,10 +72,6 @@ app.get('/restaurant/:restaurantName', (req, res) => {
     console.log("insert");
     (0, getDb_1.dishesByRestaurant)(restaurantName).then((dishes) => res.json(dishes));
 });
-// app.get('/getUser/:number', (req: any, response: any) => {
-//   const number = Number(req.params.number);
-//   getUserData(number).then((user) => response.json(user));
-// });
 app.post('/insertUser', (request, response) => {
     const userData = request.body;
     console.log(userData + "res from server");
