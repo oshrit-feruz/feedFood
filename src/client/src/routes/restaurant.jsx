@@ -18,7 +18,7 @@ export default function Restaurant(props) {
     let mounted = true;
     function getData() {
       axios
-        .get(`https://feed-food.herokuapp.com/restaurant/${restaurantName}`)
+        .get(`http://feed-food.herokuapp.com/restaurant/${restaurantName}`)
         .then((res) => {
           setDishsList(res.data);
         })

@@ -13,7 +13,7 @@ export default function Home(props) {
     let mounted = true;
     function getData() {
       axios
-        .get("https://feed-food.herokuapp.com/getFavorites")
+        .get("http://feed-food.herokuapp.com/getFavorites")
         .then((res) => {
           console.log(res.data);
           setFavoritesRestaurants(res.data);
@@ -21,7 +21,7 @@ export default function Home(props) {
         .catch((err) => alert("failed to get data- please try again"));
 
       axios
-        .get("https://feed-food.herokuapp.com/getDesserts")
+        .get("http://feed-food.herokuapp.com/getDesserts")
         .then((res) => {
           setDesserts(res.data);
         })
@@ -37,7 +37,6 @@ export default function Home(props) {
         img={restaurant.img}
         capt={restaurant.description}
         title={restaurant.restaurant_name}
-        
       />
     );
   });
@@ -62,7 +61,6 @@ export default function Home(props) {
   const dessertsUi = dessertsRestaurants.map((restaurant) => {
     return (
       <RestaurantCard
-      
         img={restaurant.img}
         capt={restaurant.description}
         title={restaurant.restaurant_name}
@@ -70,7 +68,6 @@ export default function Home(props) {
     );
   });
   return (
-
     <div className="restaurantDisplay">
       <div className="carouselDuo">
         <h4>המסעדות המומלצות</h4>

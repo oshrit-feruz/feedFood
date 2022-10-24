@@ -14,7 +14,7 @@ export default function Category(props) {
     let mounted = true;
     function getData() {
       axios
-        .get(`https://feed-food.herokuapp.com/getByCategory/${chossenCategory}`)
+        .get(`http://feed-food.herokuapp.com/getByCategory/${chossenCategory}`)
         .then((res) => {
           setRestaurants(res.data);
         })
@@ -26,7 +26,6 @@ export default function Category(props) {
   console.log(restaurants);
   const restauratUi = restaurants.map((restaurant) => {
     return (
-      
       <RestaurantCard
         img={restaurant.img}
         capt={restaurant.description}
@@ -36,10 +35,7 @@ export default function Category(props) {
   });
   return (
     <div className="restaurantDisplay">
-      <div className="resaturantsCategory">
-
-      {restauratUi}
-      </div>
+      <div className="resaturantsCategory">{restauratUi}</div>
     </div>
   );
 }
