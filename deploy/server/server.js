@@ -27,6 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const process_1 = __importDefault(require("process"));
+const cors_1 = __importDefault(require("cors"));
 const dbAdmin_1 = require("./dbAdmin");
 const getDb_1 = __importStar(require("./getDb"));
 const bodyParser = require('body-parser');
@@ -36,6 +37,7 @@ const path = require('path');
 const port = process_1.default.env.PORT || 3002;
 const app = express();
 app.use(jsonParser);
+app.use((0, cors_1.default)());
 app.use(bodyParser.json());
 app.use((_req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -72,6 +74,10 @@ app.get('/restaurant/:restaurantName', (req, res) => {
     console.log("insert");
     (0, getDb_1.dishesByRestaurant)(restaurantName).then((dishes) => res.json(dishes));
 });
+// app.get('/getUser/:number', (req: any, response: any) => {
+//   const number = Number(req.params.number);
+//   getUserData(number).then((user) => response.json(user));
+// });
 app.post('/insertUser', (request, response) => {
     const userData = request.body;
     console.log(userData + "res from server");

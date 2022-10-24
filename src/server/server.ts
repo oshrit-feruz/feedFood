@@ -1,4 +1,6 @@
 import process from "process";
+
+import cors from 'cors';
 import { checkUser, insertNewUser } from "./dbAdmin";
 import getRestaurants, { dishesByRestaurant, getByCategory, getDesserts, getFavorites } from "./getDb";
 
@@ -11,8 +13,10 @@ const path = require('path');
 const port = process.env.PORT || 3002;
 const app = express();
 app.use(jsonParser);
+
+app.use(cors());
 app.use(bodyParser.json());
-app.use((_req:any, res:any, next:any) => {
+app.use((_req: any, res: any, next: any) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });
