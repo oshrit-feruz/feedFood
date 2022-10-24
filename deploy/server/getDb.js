@@ -23,7 +23,7 @@ async function getUserOrder(user_id) {
 }
 exports.getUserOrder = getUserOrder;
 async function getByCategory(category) {
-    const sql = `SELECT * FROM restaurants WHERE type=$1 limit 30;`;
+    const sql = `SELECT * FROM restaurants WHERE restaurants.restaurant_name= dishes.restaurant_name limit 30;`;
     const result = await exports.client.query(sql, [category]);
     const restaurants = result.rows.map((order) => Object.assign(order));
     return restaurants;
@@ -52,66 +52,6 @@ async function getDesserts() {
     return restaurants;
 }
 exports.getDesserts = getDesserts;
-// export async function getMexican() {
-//   const sql = `SELECT * FROM restaurants WHERE type='מקסיקני';`;
-//   const result = await client.query(sql);
-//   const restaurants = result.rows.map((order: any) => Object.assign(order));
-//   return restaurants
-// }
-// export async function getMeat() {
-//   const sql = `SELECT * FROM restaurants WHERE type='בשר';`;
-//   const result = await client.query(sql);
-//   const restaurants = result.rows.map((order: any) => Object.assign(order));
-//   return restaurants
-// }
-// export async function getMediterranean() {
-//   const sql = `SELECT * FROM restaurants WHERE type='ים תיכוני';`;
-//   const result = await client.query(sql);
-//   const restaurants = result.rows.map((order: any) => Object.assign(order));
-//   return restaurants
-// }
-// export async function getAsian() {
-//   const sql = `SELECT * FROM restaurants WHERE type='אסייתי';`;
-//   const result = await client.query(sql);
-//   const restaurants = result.rows.map((order: any) => Object.assign(order));
-//   return restaurants
-// }
-// export async function getPizza() {
-//   const sql = `SELECT * FROM restaurants WHERE type='pizza';`;
-//   const result= await client.query(sql);
-//   const restaurants = result.rows.map((order: any) => Object.assign(order));
-//   return restaurants
-// }
-// export async function getHamburger() {
-//   const sql = `SELECT * FROM restaurants WHERE type='המבורגר';`;
-//   const result= await client.query(sql);
-//   const restaurants = result.rows.map((order: any) => Object.assign(order));
-//   return restaurants
-// }
-// export async function getSushi() {
-//   const sql = `SELECT * FROM restaurants WHERE type='סושי';`;
-//   const result= await client.query(sql);
-//   const restaurants = result.rows.map((order: any) => Object.assign(order));
-//   return restaurants
-// }
-// export async function getItalian() {
-//   const sql = `SELECT * FROM restaurants WHERE type='איטלקי';`;
-//   const result= await client.query(sql);
-//   const restaurants = result.rows.map((order: any) => Object.assign(order));
-//   return restaurants
-// }
-// export async function getDessert() {
-//   const sql = `SELECT * FROM restaurants WHERE type='קינוחים';`;
-//   const result= await client.query(sql);
-//   const restaurants = result.rows.map((order: any) => Object.assign(order));
-//   return restaurants
-// }
-// export async function getFish() {
-//   const sql = `SELECT * FROM restaurants WHERE type='דגים';`;
-//   const result= await client.query(sql);
-//   const restaurants = result.rows.map((order: any) => Object.assign(order));
-//   return restaurants
-// }
 async function getRestaurants() {
     const sql = `SELECT * FROM restaurants ;`;
     const result = await exports.client.query(sql);
@@ -119,21 +59,4 @@ async function getRestaurants() {
     return restaurants;
 }
 exports.default = getRestaurants;
-// אסייתי
-// בשר
-// ים תוכני
-// מקסיקני
-// ים תיכוני
-// איטלקי
-// pizza
-// דגים
-// קינוחים
-// המבורגר
-// סושי
-// export async function get20socks(_number: number) {
-//   const sql = `SELECT * FROM socks;`;
-//   const result = await client.query(sql);
-//   const socks20 = result.rows.map((sock: any) => Object.assign(sock));
-//   return socks20;
-// }
 //# sourceMappingURL=getDb.js.map

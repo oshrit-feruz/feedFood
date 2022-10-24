@@ -12,6 +12,10 @@ const port = process.env.PORT || 3002;
 const app = express();
 app.use(jsonParser);
 app.use(bodyParser.json());
+app.use((_req:any, res:any, next:any) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'))
   app.get('/', (_req: any, res: any) => {
