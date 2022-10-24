@@ -27,7 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const process_1 = __importDefault(require("process"));
-// import cors from 'cors'
+import cors from 'cors'
 const dbAdmin_1 = require("./dbAdmin");
 const getDb_1 = __importStar(require("./getDb"));
 // import { insertNewUser } from "./dbAdmin";
@@ -39,6 +39,7 @@ const path = require('path');
 const port = process_1.default.env.PORT || 3002;
 const app = express();
 app.use(jsonParser);
+app.use(cors())
 app.use(bodyParser.json());
 if (process_1.default.env.NODE_ENV === 'production') {
     app.use(express.static('build'));

@@ -18,7 +18,7 @@ export default function Restaurant(props) {
     let mounted = true;
     function getData() {
       axios
-        .get(`/restaurant/${restaurantName}`)
+        .get(`https://feed-food.herokuapp.com/restaurant/${restaurantName}`)
         .then((res) => {
           setDishsList(res.data);
         })
@@ -29,6 +29,7 @@ export default function Restaurant(props) {
   }, [restaurantName]);
   const dishesUi = dishsList.map((dish) => {
     if (dish.dish_price) {
+      console.log(dish);
       return (
         <div
           onClick={() =>

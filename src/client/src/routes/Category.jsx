@@ -14,7 +14,7 @@ export default function Category(props) {
     let mounted = true;
     function getData() {
       axios
-        .get(`/getByCategory/${chossenCategory}`)
+        .get(`https://feed-food.herokuapp.com/getByCategory/${chossenCategory}`)
         .then((res) => {
           setRestaurants(res.data);
         })

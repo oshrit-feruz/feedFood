@@ -13,7 +13,7 @@ export default function Home(props) {
     let mounted = true;
     function getData() {
       axios
-        .get("/getFavorites")
+        .get("https://feed-food.herokuapp.com/getFavorites")
         .then((res) => {
           console.log(res.data);
           setFavoritesRestaurants(res.data);
@@ -21,7 +21,7 @@ export default function Home(props) {
         .catch((err) => alert("failed to get data- please try again"));
 
       axios
-        .get("/getDesserts")
+        .get("https://feed-food.herokuapp.com/getDesserts")
         .then((res) => {
           setDesserts(res.data);
         })

@@ -83,5 +83,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://feed-food.herokuapp.com"
+
+  "proxy": "http://localhost:3002"
 }
