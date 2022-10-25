@@ -21,7 +21,7 @@ export async function getUserOrder(user_id: number) {
 }
 
 export async function getByCategory(category: string) {
-  const sql = `SELECT * FROM restaurants WHERE restaurants.restaurant_name= dishes.restaurant_name limit 30;`;
+  const sql = `SELECT * FROM restaurants WHERE type=$1 limit 30;`;
   const result = await client.query(sql, [category]);
   const restaurants = result.rows.map((order: any) => Object.assign(order));
   return restaurants
