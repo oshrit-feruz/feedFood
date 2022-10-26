@@ -2,7 +2,7 @@
 
 FeedFood is a online food order and delivery based on all of Israel Restaurants that offers food delivery.
 
-Click [Here](https://feedfood.netlify.app/home) to order your favorite lunch.
+Click [Here](https://feedfood.netlify.app/) to order your favorite lunch.
 
 ## Technology
 
