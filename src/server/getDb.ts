@@ -26,18 +26,24 @@ export async function getByCategory(category: string) {
   const restaurants = result.rows.map((order: any) => Object.assign(order));
   return restaurants
 }
-export async function dishesByRestaurant(restaurantName: string) {
+export async function dishesByRestaurant(restaurantName: string, type: string) {
   const sql = `SELECT * FROM dishes WHERE restaurant_name=$1 ;`;
-  console.log(restaurantName);
   const result = await client.query(sql, [restaurantName]);
   const dishes = result.rows.map((dish: any) => Object.assign(dish));
+  if (dishes.length === 0) {
+    const sql = `SELECT * FROM dishes INNER JOIN restaurants ON restaurants.restaurant_name = dishes.restaurant_name WHERE restaurants.type =$1 limit 30;`;
+    const result = await client.query(sql, [type]);
+    const dishes = result.rows.map((dish: any) => Object.assign(dish));
+    console.log(type);
+
+    return dishes
+  }
   return dishes
 }
 export async function getFavorites() {
   const sql = `select * from restaurants order by RANDOM() limit 30;`;
   const result = await client.query(sql);
   const restaurants = result.rows.map((order: any) => Object.assign(order));
-  console.log(restaurants);
   return restaurants
 }
 export async function getDesserts() {

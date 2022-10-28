@@ -19,64 +19,6 @@ import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Skeleton from "@mui/material/Skeleton";
 
-function Media(props) {
-  const { loading = false } = props;
-
-  return (
-    <Card sx={{ maxWidth: 345, m: 2 }}>
-      <CardHeader
-        title={
-          loading ? (
-            <Skeleton
-              animation="wave"
-              height={10}
-              width="80%"
-              style={{ marginBottom: 6 }}
-            />
-          ) : (
-            "Ted"
-          )
-        }
-        subheader={
-          loading ? (
-            <Skeleton animation="wave" height={10} width="40%" />
-          ) : (
-            "5 hours ago"
-          )
-        }
-      />
-      {loading ? (
-        <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
-      ) : (
-        <CardMedia
-          component="img"
-          height="140"
-          image="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/72bda89f-9bbf-4685-910a-2f151c4f3a8a/NicolaSturgeon_2019T-embed.jpg?w=512"
-          alt="Nicola Sturgeon on a TED talk stage"
-        />
-      )}
-      <CardContent>
-        {loading ? (
-          <React.Fragment>
-            <Skeleton
-              animation="wave"
-              height={10}
-              style={{ marginBottom: 6 }}
-            />
-            <Skeleton animation="wave" height={10} width="80%" />
-          </React.Fragment>
-        ) : (
-          <Typography variant="body2" color="text.secondary" component="p">
-            {
-              "Why First Minister of Scotland Nicola Sturgeon thinks GDP is the wrong measure of a country's success:"
-            }
-          </Typography>
-        )}
-      </CardContent>
-    </Card>
-  );
-}
-
 export default function DishCard(props) {
   return (
     <CCard className="mb-3" id={props.id}>
@@ -86,7 +28,7 @@ export default function DishCard(props) {
         </CCol>
         <CCol md={8}>
           <CCardBody>
-            <CCardTitle>{props.title}</CCardTitle>
+            <CCardTitle style={{color: '#000', marginTop: '0 !important', fontWeight: '700', fontSize: '16px'}}>{props.title}</CCardTitle>
             <CCardText>{props.capt}</CCardText>
             <CCardText>
               <medium className="text-medium-emphasis">{props.price}</medium>

@@ -13,7 +13,7 @@ export default function Home(props) {
     let mounted = true;
     function getData() {
       axios
-        .get("http://feed-food.herokuapp.com/getFavorites")
+        .get("/getFavorites")
         .then((res) => {
           console.log(res.data);
           setFavoritesRestaurants(res.data);
@@ -21,7 +21,7 @@ export default function Home(props) {
         .catch((err) => alert("failed to get data- please try again"));
 
       axios
-        .get("http://feed-food.herokuapp.com/getDesserts")
+        .get("/getDesserts")
         .then((res) => {
           setDesserts(res.data);
         })
@@ -37,6 +37,7 @@ export default function Home(props) {
         img={restaurant.img}
         capt={restaurant.description}
         title={restaurant.restaurant_name}
+        type={restaurant.type}
       />
     );
   });
@@ -46,6 +47,7 @@ export default function Home(props) {
         img={restaurant.img}
         capt={restaurant.description}
         title={restaurant.restaurant_name}
+        type={restaurant.type}
       />
     );
   });
@@ -55,6 +57,7 @@ export default function Home(props) {
         img={restaurant.img}
         capt={restaurant.description}
         title={restaurant.restaurant_name}
+        type={restaurant.type}
       />
     );
   });
@@ -64,6 +67,7 @@ export default function Home(props) {
         img={restaurant.img}
         capt={restaurant.description}
         title={restaurant.restaurant_name}
+        type={restaurant.type}
       />
     );
   });

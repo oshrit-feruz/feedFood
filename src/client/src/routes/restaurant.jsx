@@ -13,12 +13,13 @@ export default function Restaurant(props) {
   const [dishsList, setDishsList] = useState([]);
 
   const restaurantName = location.state?.restaurantName;
-  console.log(restaurantName);
+  const type = location.state?.type;
   useEffect(() => {
     let mounted = true;
     function getData() {
+      console.log(restaurantName,type);
       axios
-        .get(`http://feed-food.herokuapp.com/restaurant/${restaurantName}`)
+        .get(`/restaurant/${restaurantName}/${type}`)
         .then((res) => {
           setDishsList(res.data);
         })
@@ -29,7 +30,6 @@ export default function Restaurant(props) {
   }, [restaurantName]);
   const dishesUi = dishsList.map((dish) => {
     if (dish.dish_price) {
-      console.log(dish);
       return (
         <div
           onClick={() =>

@@ -17,7 +17,7 @@ function App() {
       <div className="mainPage">
         <Filters />
         <Routes>
-          <Route path="/home" element={<Home />}></Route>
+          <Route path="/" element={<Home />}></Route>
           <Route path="/category" element={<Category />}></Route>
           <Route path="/restaurant" element={<Restaurant  dishsList={dishs} setDishs={setDishs}/>}></Route>
         </Routes>

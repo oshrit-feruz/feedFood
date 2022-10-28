@@ -20,13 +20,6 @@ app.use((_req: any, res: any, next: any) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('build'))
-  app.get('/', (_req: any, res: any) => {
-    console.log(__dirname);
-    res.sendFile(path.resolve(__dirname, '../build', 'index.html'))
-  })
-}
 app.get('/getRestaurants', (_req: Request, res: any) => {
   getRestaurants().then((restaurants) => res.json(restaurants))
 })
@@ -38,19 +31,17 @@ app.get('/getDesserts', (_req: Request, res: any) => {
 })
 app.post('/checkUser', (req: any, res: any) => {
   const userData = req.body;
-  console.log(userData)
   checkUser(userData).then((userDb) => res.json(userDb))
 })
 app.get('/getByCategory/:category', (req: any, res: any) => {
   let category = req.params.category;
   getByCategory(category).then((restaurants) => res.json(restaurants))
 })
-app.get('/restaurant/:restaurantName', (req: any, res: any) => {
+app.get('/restaurant/:restaurantName/:type', (req: any, res: any) => {
   let restaurantName = req.params.restaurantName;
-  console.log(req);
-  console.log("insert");
+  let type = req.params.type;
 
-  dishesByRestaurant(restaurantName).then((dishes) => res.json(dishes))
+  dishesByRestaurant(restaurantName, type).then((dishes) => res.json(dishes))
 })
 // app.get('/getUser/:number', (req: any, response: any) => {
 //   const number = Number(req.params.number);
@@ -58,7 +49,6 @@ app.get('/restaurant/:restaurantName', (req: any, res: any) => {
 // });
 app.post('/insertUser', (request: any, response: any) => {
   const userData = request.body;
-  console.log(userData + "res from server");
   insertNewUser(userData)
   response.send(({ response: 'you succsess!' }))
 })
@@ -67,6 +57,12 @@ app.post('/insertUser', (request: any, response: any) => {
 //   getUserOrder(number).then((orders) => response.json(orders));
 // })
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('build'))
+  app.get('*', (_req: any, res: any) => {
+    res.sendFile(path.join(__dirname, '../build', 'index.html'))
+  })
+}
 
 app.listen(port || 3002, () => {
   console.log('listen to port ' + port);

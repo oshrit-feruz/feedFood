@@ -38,7 +38,7 @@ function NavBar(props) {
     <Navbar bg="white" expand="lg">
       <Container fluid>
         <Navbar.Brand>
-          <Link to="/home">
+          <Link to="/">
             <img className="logo" src={logo} alt="" />
           </Link>
         </Navbar.Brand>
