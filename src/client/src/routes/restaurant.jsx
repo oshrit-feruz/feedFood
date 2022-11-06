@@ -17,7 +17,7 @@ export default function Restaurant(props) {
   useEffect(() => {
     let mounted = true;
     function getData() {
-      console.log(restaurantName,type);
+      console.log(restaurantName, type);
       axios
         .get(`/restaurant/${restaurantName}/${type}`)
         .then((res) => {
@@ -31,20 +31,9 @@ export default function Restaurant(props) {
   const dishesUi = dishsList.map((dish) => {
     if (dish.dish_price) {
       return (
-        <div
-          onClick={() =>
-            props.setDishs((current) => [
-              ...current,
-              {
-                img: dish.dish_img,
-                title: dish.dish,
-                capt: dish.dish_desc,
-                price: dish.dish_price,
-              },
-            ])
-          }
-        >
+        <div>
           <DishCard
+            setDishs={props.setDishs}
             id={dish.dish_id}
             img={dish.dish_img}
             capt={dish.dish_desc}

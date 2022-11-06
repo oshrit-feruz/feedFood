@@ -27,10 +27,7 @@ function NavBar(props) {
     props.orderList.length = 0;
   }, []);
 
-  useEffect(() => {
-    console.log(props.orderList);
-    console.log(user);
-  }, [user, props.orderList]);
+  useEffect(() => {}, [user, props.orderList]);
 
   const handleLogOut = () => setUser(null);
 
@@ -57,7 +54,6 @@ function NavBar(props) {
             <>
               <Button
                 style={{
-                  width: "124px",
                   padding: "10px",
                   fontSize: "17px",
                   borderRadius: "9px",

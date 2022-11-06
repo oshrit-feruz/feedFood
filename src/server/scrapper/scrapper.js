@@ -5,7 +5,6 @@ class Scrapper {
   constructor(restName) {
     this.restName = restName;
   }
-
   static async getDishes(restName) {
     const scrapper = new Scrapper(restName);
     console.log("before Init");

@@ -19,10 +19,7 @@ export default function RestaurantCard(props) {
           <Card.Title>{props.title}</Card.Title>
         </Link>
         <Card.Text className="tags">{props.capt}</Card.Text>
-        <Button variant="solid" disabled>
-          20-30 min
-        </Button>{" "}
-        <div className="cardFooter">{Math.floor(Math.random() * 30 + 20)} </div>
+        <div className="cardFooter">{Math.floor(Math.random() * 30 + 20)}₪🚴‍♂️ </div>
       </Card.Body>
     </Card>
   );

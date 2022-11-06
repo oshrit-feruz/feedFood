@@ -9,21 +9,22 @@ import Restaurant from "./routes/restaurant";
 function App() {
   const [dishs, setDishs] = useState([]);
 
-  useEffect(() => {
-  }, [dishs]);
+  useEffect(() => {}, [dishs]);
   return (
     <>
-      <NavBar orderList={dishs}/>
+      <NavBar orderList={dishs} />
       <div className="mainPage">
+        <div class="popupContainer"></div>
         <Filters />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/category" element={<Category />}></Route>
-          <Route path="/restaurant" element={<Restaurant  dishsList={dishs} setDishs={setDishs}/>}></Route>
+          <Route
+            path="/restaurant"
+            element={<Restaurant dishsList={dishs} setDishs={setDishs} />}
+          ></Route>
         </Routes>
       </div>
-      {/* {restUi} */}
-      {/* <LargeCarousel/> */}
     </>
   );
 }

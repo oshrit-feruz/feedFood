@@ -43,20 +43,11 @@ app.get('/restaurant/:restaurantName/:type', (req: any, res: any) => {
 
   dishesByRestaurant(restaurantName, type).then((dishes) => res.json(dishes))
 })
-// app.get('/getUser/:number', (req: any, response: any) => {
-//   const number = Number(req.params.number);
-//   getUserData(number).then((user) => response.json(user));
-// });
 app.post('/insertUser', (request: any, response: any) => {
   const userData = request.body;
   insertNewUser(userData)
   response.send(({ response: 'you succsess!' }))
 })
-// app.get('/getOrders/:number', (req: any, response: any) => {
-//   const number = Number(req.params.number);
-//   getUserOrder(number).then((orders) => response.json(orders));
-// })
-
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'))
   app.get('*', (_req: any, res: any) => {
