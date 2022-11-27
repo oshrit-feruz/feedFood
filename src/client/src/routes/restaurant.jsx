@@ -28,7 +28,7 @@ export default function Restaurant(props) {
     getData();
     return () => (mounted = false);
   }, [restaurantName]);
-  const dishesUi = dishsList.map((dish) => {
+  const dishsUi = dishsList.map((dish) => {
     if (dish.dish_price) {
       return (
         <div>
@@ -46,8 +46,10 @@ export default function Restaurant(props) {
   });
 
   return (
-    <div className="restaurantDisplay">
-      <div className="dishesContainer">{dishesUi}</div>
-    </div>
+    <>
+      <div className="restaurantDisplay">
+        <div className="dishsContainer">{dishsUi}</div>
+      </div>
+    </>
   );
 }

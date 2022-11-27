@@ -9,13 +9,14 @@ import Restaurant from "./routes/restaurant";
 function App() {
   const [dishs, setDishs] = useState([]);
 
+  let width = window.innerWidth;
   useEffect(() => {}, [dishs]);
   return (
     <>
       <NavBar orderList={dishs} />
       <div className="mainPage">
         <div class="popupContainer"></div>
-        <Filters />
+        {width > 790 ? <Filters /> : <></>}
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/category" element={<Category />}></Route>

@@ -11,7 +11,7 @@ export default function LargeCarousel(props) {
     slidesToScroll: 2,
     responsive: [
       {
-        breakpoint: 1600,
+        breakpoint: 1200,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -20,7 +20,7 @@ export default function LargeCarousel(props) {
         },
       },
       {
-        breakpoint: 1380,
+        breakpoint: 768,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -28,10 +28,10 @@ export default function LargeCarousel(props) {
         },
       },
       {
-        breakpoint: 1090,
+        breakpoint: 600,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 2,
+          slidesToScroll: 2,
         },
       },
     ],
@@ -39,16 +39,16 @@ export default function LargeCarousel(props) {
   return (
     <div className="RestaurantCarousel">
       <Slider {...settings}>
-        <div>{props.card[0]}</div>
-        <div>{props.card[1]}</div>
-        <div>{props.card[2]}</div>
-        <div>{props.card[3]}</div>
-        <div>{props.card[4]}</div>
-        <div>{props.card[5]}</div>
-        <div>{props.card[6]}</div>
-        <div>{props.card[7]}</div>
-        <div>{props.card[8]}</div>
-        <div>{props.card[9]}</div>
+        <div className="sliderCardContainer" >{props.card[0]}</div>
+        <div className="sliderCardContainer">{props.card[1]}</div>
+        <div className="sliderCardContainer">{props.card[2]}</div>
+        <div className="sliderCardContainer">{props.card[3]}</div>
+        <div className="sliderCardContainer">{props.card[4]}</div>
+        <div className="sliderCardContainer">{props.card[5]}</div>
+        <div className="sliderCardContainer">{props.card[6]}</div>
+        <div className="sliderCardContainer">{props.card[7]}</div>
+        <div className="sliderCardContainer">{props.card[8]}</div>
+        <div className="sliderCardContainer">{props.card[9]}</div>
       </Slider>
     </div>
   );

@@ -1,7 +1,5 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { React, useEffect, useState } from "react";
-import TextField from "@mui/material/TextField";
-import LargeCarousel from "../components/largeCarousel";
 import RestaurantCard from "../components/restaurantCard";
 import axios from "axios";
 import { useLocation, useParams } from "react-router-dom";
@@ -16,6 +14,7 @@ export default function Category(props) {
       axios
         .get(`/getByCategory/${chossenCategory}`)
         .then((res) => {
+          console.log(res.data,chossenCategory);
           setRestaurants(res.data);
         })
         .catch((err) => alert(`failed to get data please try again`));
@@ -30,12 +29,16 @@ export default function Category(props) {
         capt={restaurant.description}
         title={restaurant.restaurant_name}
         type={restaurant.type}
+        price={true}
       />
     );
   });
   return (
+    <>
+
     <div className="restaurantDisplay">
       <div className="resaturantsCategory">{restauratUi}</div>
     </div>
+    </>
   );
 }

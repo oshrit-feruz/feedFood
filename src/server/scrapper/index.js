@@ -314,17 +314,14 @@ console.log("after conection");
 async function scrapAll() {
   for (let i = 0; i < resNames.length; i++) {
     console.log(resNames[i]);
-    const dishes = await Scrapper.getDishes(resNames[i]);
+    const dishs = await Scrapper.getDishs(resNames[i]);
     console.log("ok");
     for (let j = 0; j < 30; j++) {
-      const dishData = dishes[j];
-      let insertToDishes = `INSERT INTO dishes(dish,dish_desc,dish_img,restaurant_name,dish_price) VALUES ($1,$2,$3,$4,$5)`;
-      // let dishValues = `(${dishData.name},${dishData.description},${dishData.image},${resNames[i]},${dishData.price});`;
-      // let sql1 = insertToDishes + dishValues;
-      // console.log(insertToDishes,[dishData.name,dishData.description,dishData.image,"gggg",dishData.price]);
-      console.log(dishData);
+      const dishData = dishs[j];
+      let insertToDishs = `INSERT INTO dishes(dish,dish_desc,dish_img,restaurant_name,dish_price) VALUES ($1,$2,$3,$4,$5)`;
+        console.log(dishData);
       if (dishData) {
-        await client.query(insertToDishes, [
+        await client.query(insertToDishs, [
           dishData.name,
           dishData.description,
           dishData.image,

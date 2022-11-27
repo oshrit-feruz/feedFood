@@ -15,15 +15,12 @@ function SearchBar() {
     <>
       <nav className="navbar navbar-expand-lg navbar-white bg-white">
         <img className="logo" src={logo} alt="" />
-
-        {/* <Geosuggest /> */}
         <Formik />
         <div>
         <SignUpFunc />
         </div>
       </nav>
       <div className="App">
-        {/* <RestaurantCard /> */}
         <Home/>
       </div>
     </>

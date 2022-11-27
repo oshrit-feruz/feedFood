@@ -2,7 +2,7 @@ import process from "process";
 
 import cors from 'cors';
 import { checkUser, insertNewUser } from "./dbAdmin";
-import getRestaurants, { dishesByRestaurant, getByCategory, getDesserts, getFavorites } from "./getDb";
+import getRestaurants, { dishsByRestaurant, getByCategory, getDesserts, getFavorites } from "./getDb";
 
 
 const bodyParser = require('body-parser')
@@ -14,8 +14,8 @@ const port = process.env.PORT || 3002;
 const app = express();
 app.use(jsonParser);
 
-app.use(cors());
 app.use(bodyParser.json());
+app.use(cors());
 app.use((_req: any, res: any, next: any) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
@@ -41,7 +41,7 @@ app.get('/restaurant/:restaurantName/:type', (req: any, res: any) => {
   let restaurantName = req.params.restaurantName;
   let type = req.params.type;
 
-  dishesByRestaurant(restaurantName, type).then((dishes) => res.json(dishes))
+  dishsByRestaurant(restaurantName, type).then((dishs) => res.json(dishs))
 })
 app.post('/insertUser', (request: any, response: any) => {
   const userData = request.body;

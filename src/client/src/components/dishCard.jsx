@@ -1,9 +1,5 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Avatar from "@mui/material/Avatar";
+import React, { useEffect, useState, useRef } from "react";
+import Modal from "react-bootstrap/Modal";
 import {
   CCard,
   CCardImage,
@@ -13,20 +9,43 @@ import {
   CCardText,
   CCardTitle,
 } from "@coreui/bootstrap-react";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Skeleton from "@mui/material/Skeleton";
+import Form from "react-bootstrap/Form";
+import Button from "@mui/material/Button";
+
 export default function DishCard(props) {
-  let popup
+  const [showUp, setShowPopup] = useState(false);
+  const handleClosePopup = () => setShowPopup(false);
+  const noteInput = useRef(null);
   const popupContainer = document.querySelector(".popupContainer");
-    return (
+  const setNote = () => {
+    noteInput.current.focus();
+    console.log(noteInput.current.value);
+    props.setDishs((current) => [
+      ...current,
+      {
+        img: props.img,
+        title: props.title,
+        capt: props.capt,
+        price: props.price,
+        note: noteInput.current.value,
+      },
+    ]);
+    localStorage.setItem(
+      "dishNote",
+      JSON.stringify({
+        dishName: props.title,
+        note: noteInput.current.value,
+      })
+    );
+    setShowPopup(false);
+  };
+  return (
     <CCard className="mb-3" id={props.id}>
       <CRow className="g-0">
-        <CCol md={4}>
+        <CCol className="dishImg">
           <CCardImage src={props.img} />
         </CCol>
-        <CCol md={8}>
+        <CCol className="dishMain">
           <CCardBody>
             <CCardTitle
               style={{
@@ -63,13 +82,37 @@ export default function DishCard(props) {
                   className="categoryIcon"
                 />
               </div>
-              <div >
-                {popup}
+              <div>
                 <img
+                  onClick={() => setShowPopup(true)}
                   src="https://img.icons8.com/material-two-tone/24/000000/note.png"
                   alt="note"
                   className="categoryIcon"
                 />
+
+                <div style={{ transform: "none !important" }}>
+                  <Modal
+                    style={{ transform: "none !important" }}
+                    className="popup-content"
+                    show={showUp}
+                    onHide={handleClosePopup}
+                    backdrop="static"
+                  >
+                    <Modal.Header
+                      closeButton
+                      style={{ transform: "none !important" }}
+                    >
+                      <Modal.Title> הערות למנה</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body style={{ transform: "none !important" }}>
+                      <Form.Control type="note" ref={noteInput} />{" "}
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button onClick={setNote}>הוספת מנה</Button>
+                    </Modal.Footer>
+                  </Modal>
+                </div>
               </div>
             </CCardText>
           </CCardBody>

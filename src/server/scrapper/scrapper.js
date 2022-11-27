@@ -5,15 +5,15 @@ class Scrapper {
   constructor(restName) {
     this.restName = restName;
   }
-  static async getDishes(restName) {
+  static async getDishs(restName) {
     const scrapper = new Scrapper(restName);
     console.log("before Init");
     await scrapper.init();
     console.log("after init");
-    const dishes = await scrapper.getDishes();
-    console.log("after get dishes");
+    const dishs = await scrapper.getDishs();
+    console.log("after get dishs");
     await scrapper.close();
-    return dishes;
+    return dishs;
   }
 
   async init() {
@@ -33,13 +33,12 @@ class Scrapper {
     });
   }
 
-  async getDishes() {
+  async getDishs() {
     const dishArr = [];
     await this.delay(1000);
 
-    const dishes = await this.page.$$('article[role="dish"].dish');
-    // console.log("there are " + dishes.length + " dishes");
-    for (const dish of dishes) {
+    const dishs = await this.page.$$('article[role="dish"].dish');
+    for (const dish of dishs) {
       const name =
         (await (await (await dish.$(".dish-name"))?.getProperty("textContent"))
           ?.jsonValue()

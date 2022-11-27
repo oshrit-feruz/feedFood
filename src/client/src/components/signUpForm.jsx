@@ -58,11 +58,11 @@ function SignUpFunc(props) {
       axios
         .post("/checkUser", existUser)
         .then((res) => {
-          console.log(res.data)
+          console.log(res.data);
           if (res.data == "") {
             alert("האימייל או הסיסמה לא נכונים- אנא נסה שוב");
           } else {
-            console.log("first")
+            console.log("first");
             props.setUser(res.data);
             handleCloseSignIn();
           }
@@ -78,10 +78,7 @@ function SignUpFunc(props) {
     cityInput.current.focus();
     streetInput.current.focus();
     phoneNumberInput.current.focus();
-    if (
-      textValidate(nameInput.current.value).status &
-      (nameInput.current.value !== "")
-    ) {
+    if (nameInput.current.value !== "") {
       if (
         emailValidate(emailInput.current.value).status &
         (emailInput.current.value !== "")
@@ -90,10 +87,7 @@ function SignUpFunc(props) {
           textNumberValidate(passwordInput.current.value).status &
           (passwordInput.current.value !== "")
         ) {
-          if (
-            textValidate(cityInput.current.value).status &
-            (cityInput.current.value !== "")
-          ) {
+          if (cityInput.current.value !== "") {
             if (
               textNumberValidate(streetInput.current.value).status &
               (streetInput.current.value !== "")
@@ -170,7 +164,11 @@ function SignUpFunc(props) {
             <Form.Group className="mb-2" controlId="form">
               <Form.Label>שם מלא</Form.Label>
               <Form.Control
-                type="name"
+                onKeyDown={(e) => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
+                onFocus={(e) => e.stopPropagation()}
+                onMouseOver={(e) => e.stopPropagation()}
+                type="text"
                 placeholder="הכנס שם פרטי ומשפחה"
                 ref={nameInput}
               />
@@ -194,11 +192,25 @@ function SignUpFunc(props) {
             </Form.Group>
             <Form.Group className="mb-2" controlId="form">
               <Form.Label>עיר </Form.Label>
-              <Form.Control type="City" ref={cityInput} />
+              <Form.Control
+                type="City"
+                ref={cityInput}
+                onKeyDown={(e) => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
+                onFocus={(e) => e.stopPropagation()}
+                onMouseOver={(e) => e.stopPropagation()}
+              />
             </Form.Group>
             <Form.Group className="mb-2" controlId="form">
               <Form.Label>רחוב</Form.Label>
-              <Form.Control type="street" ref={streetInput} />
+              <Form.Control
+                type="street"
+                ref={streetInput}
+                onKeyDown={(e) => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
+                onFocus={(e) => e.stopPropagation()}
+                onMouseOver={(e) => e.stopPropagation()}
+              />
             </Form.Group>
             <Form.Group className="mb-2" controlId="form">
               <Form.Label>מספר טלפון</Form.Label>
