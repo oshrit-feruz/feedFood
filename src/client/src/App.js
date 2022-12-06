@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {}, [dishs]);
   return (
     <>
-      <NavBar orderList={dishs} />
+      <NavBar orderList={dishs} setOrderList={setDishs}/>
       <div className="mainPage">
         <div class="popupContainer"></div>
         {width > 790 ? <Filters /> : <></>}

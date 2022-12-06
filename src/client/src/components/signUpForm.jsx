@@ -88,13 +88,11 @@ function SignUpFunc(props) {
           (passwordInput.current.value !== "")
         ) {
           if (cityInput.current.value !== "") {
-            if (
-              textNumberValidate(streetInput.current.value).status &
-              (streetInput.current.value !== "")
-            ) {
+            if (streetInput.current.value !== "") {
               if (
                 numValidate(phoneNumberInput.current.value).status &
-                (phoneNumberInput.current.value !== null)
+                (phoneNumberInput.current.value !== null) &
+                (phoneNumberInput.current.value.length === 10)
               ) {
                 setNewUser({
                   name: nameInput.current.value,

@@ -1,16 +1,16 @@
-# FeedFood App
+# FeedFood App 🍔	
 'Feed Food' website is a food delivery service that allows users to search all restaurants in Israel that make deliveries and arrange them according to the customer's location.
 On the website, restaurants are categorized according to their dishs type  and displayed by category.
 
 ## Click [Here](https://feed-food.herokuapp.com/) to order your favorite lunch.👈
 
-## Why did I choose to build Feed Food?
+## Why did I choose to build Feed Food? 🤔
 I chose this project because I wanted a challenge in developing a Hebrew site that uses information from the country (this is less accessible and therefore there was no API for restaurants) and there is a real need for it - there are not many platforms that provide all the restaurants that make deliveries and the dishs they serve.
 'Wolt' is available, but only in certain locations.
 ## Technology
 ### Client side :
 The client side is written in React. I found that React is the most comfortable platform to use for state controller in my app.
-### Server side :'
+### Server side :
 The server side is written in TypeScript and compiled into NodeJS through a gulp file and been uploaded to 'Heroku'. 
 I Scrape food delivery Websites Using Node.js and Puppeteer 
 to store the data in my DB( PostgreSQL ) and used google API to render the restaurants by location.

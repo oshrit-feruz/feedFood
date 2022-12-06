@@ -23,13 +23,28 @@ import {
 } from "@coreui/bootstrap-react";
 function NavBar(props) {
   const [user, setUser] = useState(null);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [showUp, setShowOrder] = useState(false);
   const handleCloseOrder = () => setShowOrder(false);
   useEffect(() => {
     props.orderList.length = 0;
   }, []);
 
-  useEffect(() => {}, [user, props.orderList]);
+  useEffect(() => {
+    if (props.orderList.length !== 0) {
+      let prices = 0;
+      for (let i = 0; i < props.orderList.length; i++) {
+        const element = Number(
+          props.orderList[i].price.slice(0, props.orderList[i].price.length - 1)
+        );
+        prices = prices + element;
+      }
+      setTotalPrice(prices);
+
+    } else {
+      setTotalPrice(0);
+    }
+  }, [user, props.orderList]);
 
   const noteInput = useRef(null);
   const handleLogOut = () => setUser(null);
@@ -99,10 +114,10 @@ function NavBar(props) {
               variant="outlined"
               color="inherit"
               id="dropdown-basic"
-            >  
-            <Badge color="secondary" badgeContent={props.orderList.length}>
-            <ShoppingCartIcon />{" "}
-          </Badge>
+            >
+              <Badge color="secondary" badgeContent={props.orderList.length}>
+                <ShoppingCartIcon />{" "}
+              </Badge>
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
@@ -118,15 +133,15 @@ function NavBar(props) {
               ) : (
                 props.orderList.map((dish) => (
                   <>
-                    <CCard  style={{ width: "80vw" }}>
-                      <CRow  style={{ width: "80vw" }}>
-                        <CCol >
+                    <CCard className="previewOrder">
+                      <CRow className="previewOrder">
+                        <CCol>
                           <CCardImage
                             src={dish.img}
                             style={{ padding: "11px", width: "132px" }}
                           />
                         </CCol>
-                        <CCol >
+                        <CCol>
                           <CCardBody>
                             <CCardTitle>{dish.title}</CCardTitle>
                             <CCardText>{dish.capt}</CCardText>
@@ -158,13 +173,9 @@ function NavBar(props) {
                             {props.orderList.map((dish) => {
                               return (
                                 <>
-                                  <CCard
-                                    style={{ width: "80vw" }}
-                                  >
-                                    <CRow
-                                      style={{ width:"80vw" }}
-                                    >
-                                      <CCol md={1}>
+                                  <CCard className="orderListCostumer">
+                                    <CRow className="orderListCostumer">
+                                      <CCol>
                                         <CCardImage
                                           src={dish.img}
                                           style={{
@@ -173,7 +184,7 @@ function NavBar(props) {
                                           }}
                                         />
                                       </CCol>
-                                      <CCol md={2}>
+                                      <CCol>
                                         <CCardBody>
                                           <CCardTitle>{dish.title}</CCardTitle>
                                           <CCardText>{dish.capt}</CCardText>
@@ -184,6 +195,23 @@ function NavBar(props) {
                                             <small className="text-medium-emphasis">
                                               {dish.price}
                                             </small>
+                                            <img
+                                              onClick={(e) =>
+                                                props.setOrderList(
+                                                  props.orderList.filter(
+                                                    function (dish) {
+                                                      return (
+                                                        dish.title !==
+                                                        e.target.alt
+                                                      );
+                                                    }
+                                                  )
+                                                )
+                                              }
+                                              src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png"
+                                              alt={dish.title}
+                                              className="categoryIcon"
+                                            />
                                           </CCardText>
                                         </CCardBody>
                                       </CCol>
@@ -193,6 +221,7 @@ function NavBar(props) {
                               );
                             })}
                           </Modal.Body>
+                          <h3>סך כל ההזמנה :{Number(totalPrice)}₪</h3>
                         </Modal>
                       </div>
                     </div>
