@@ -24,6 +24,6 @@ After this fundamental challenge, I continued to build the whole site but this c
 ```bash
  git clone
  npm ci
- in one terminal run :'npm run server'
- in other terminal run : 'npm run start'
+ in one terminal run :'nodemon ./src/server/server.ts'
+ in other terminal run : 'npm start'
 ```
